@@ -8,7 +8,7 @@ public class PlayerFire : MonoBehaviour
     //  - 총알프리펩
     public GameObject BulletPrefab;
     //  - 생성위치(총구)
-    public Transform MuzzleLocation;
+    public Transform[] MuzzleLocation;
 
     private void Update()
     {
@@ -22,8 +22,9 @@ public class PlayerFire : MonoBehaviour
 
     private void FireBullet()
     {
-        GameObject bullet = Instantiate(BulletPrefab);
-
-        bullet.transform.position = MuzzleLocation.position;
+        foreach(Transform muzzleTf in MuzzleLocation)
+        {
+            Instantiate(BulletPrefab, muzzleTf.position, Quaternion.identity);
+        }
     }
 }
