@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
     {
         if(Time.time - _generatedTime >= LifeTime)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         transform.Translate(Direction * Speed * Time.deltaTime);
