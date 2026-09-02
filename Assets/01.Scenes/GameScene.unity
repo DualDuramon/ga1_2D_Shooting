@@ -383,7 +383,6 @@ GameObject:
   - component: {fileID: 841643921}
   - component: {fileID: 841643923}
   - component: {fileID: 841643925}
-  - component: {fileID: 841643924}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -482,18 +481,6 @@ MonoBehaviour:
   Speed: 5
   IncreaseSpeedAmount: 1
   DecreaseSpeedAmount: -1
---- !u!114 &841643924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 841643920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91458a0c7017c0d4287b6924f95b595c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCommandInvoker
 --- !u!114 &841643925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +497,7 @@ MonoBehaviour:
   MuzzleLocation:
   - {fileID: 1117487943}
   - {fileID: 597042178}
+  FireCoolTime: 0.3
 --- !u!1 &1117487942
 GameObject:
   m_ObjectHideFlags: 0
