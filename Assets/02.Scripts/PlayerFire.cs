@@ -12,14 +12,22 @@ public class PlayerFire : MonoBehaviour
     public float FireCoolTime = 0.3f;
 
     private float _lastFireTime = 0f;
+    public bool AutometicFire = false;
+
 
     private void Update()
     {
-        //1. 스페이스바를 누르면
-        if (Input.GetKeyDown(KeyCode.Space) && Time.time - _lastFireTime > FireCoolTime)
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            //2. 총알 발사
-            FireBullet();
+            ToggleFireMode();
+        }
+
+        if(Time.time - _lastFireTime > FireCoolTime)
+        {
+            if(AutometicFire || Input.GetKeyDown(KeyCode.Space))
+            {
+                FireBullet();
+            }
         }
     }
 
@@ -31,5 +39,10 @@ public class PlayerFire : MonoBehaviour
         }
 
         _lastFireTime = Time.time;
+    }
+
+    private void ToggleFireMode()
+    {
+        AutometicFire = !AutometicFire;
     }
 }
