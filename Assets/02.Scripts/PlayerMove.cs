@@ -38,18 +38,13 @@ public class PlayerMove : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
         Vector2 dir = new Vector2(h, v);
-        Vector2 normalizedSpeed = dir.normalized * Speed;
+        Vector2 normalizedSpeed = dir.normalized;
         transform.Translate(normalizedSpeed * Speed * Time.deltaTime);
 
-        
+
 
         //입력처리방식3 : 다음위치 = 현재위치 + 속도 * 시간
         //transform.position = (Vector2)transform.position + dir * Speed * Time.deltaTime;
-
-    }
-
-    private void LateUpdate()
-    {
         LimitPlayerTransform();
     }
 
@@ -65,20 +60,20 @@ public class PlayerMove : MonoBehaviour
 
         if(transform.position.x > ceilLimit.x)
         {
-            newPosition.x = ceilLimit.x;
+            newPosition.x = bottomLimit.x;
         }
         else if(transform.position.x < bottomLimit.x)
         {
-            newPosition.x = bottomLimit.x;
+            newPosition.x = ceilLimit.x;
         }
 
         if (transform.position.y > ceilLimit.y)
         {
-            newPosition.y = ceilLimit.y;
+            newPosition.y = bottomLimit.y;
         }
         else if (transform.position.y < bottomLimit.y)
         {
-            newPosition.y = bottomLimit.y;
+            newPosition.y = ceilLimit.y;
         }
 
         transform.position = newPosition;
