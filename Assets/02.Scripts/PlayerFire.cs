@@ -7,8 +7,10 @@ public class PlayerFire : MonoBehaviour
     //필요 속성
     //  - 총알프리펩
     public GameObject BulletPrefab;
+    public GameObject SideBulletPrefab;
     //  - 생성위치(총구)
     public Transform[] MuzzleLocation;
+    public Transform[] SideMuzzleLocation;
     public float FireCoolTime = 0.3f;
 
     private float _lastFireTime = 0f;
@@ -26,19 +28,28 @@ public class PlayerFire : MonoBehaviour
         {
             if(AutometicFire || Input.GetKeyDown(KeyCode.Space))
             {
-                FireBullet();
+                FireMainBullet();
+                FireSideBullet();
+                _lastFireTime = Time.time;
             }
         }
     }
 
-    private void FireBullet()
+    private void FireMainBullet()
     {
-        foreach(Transform muzzleTf in MuzzleLocation)
-        {
-            Instantiate(BulletPrefab, muzzleTf.position, Quaternion.identity);
-        }
+        GenerateBullet(BulletPrefab, MuzzleLocation);
+    }
+    private void FireSideBullet()
+    {
+        GenerateBullet(SideBulletPrefab, SideMuzzleLocation);
+    }
 
-        _lastFireTime = Time.time;
+    private void GenerateBullet(GameObject bulletPrefab, Transform[] locations)
+    {
+        foreach (Transform muzzleTf in locations)
+        {
+            Instantiate(bulletPrefab, muzzleTf.position, Quaternion.identity);
+        }
     }
 
     private void ToggleFireMode()
