@@ -1,10 +1,19 @@
+using UnityEditor.XR;
 using UnityEngine;
 
 //역할 : 키보드 입력에 따라서 플레이어 입력 처리.
 public class PlayerMove : MonoBehaviour
 {
     public float Speed = 0.05f;
+
+    private Vector2 _boundSize = Vector2.zero;
     
+    private void Awake()
+    {
+        _boundSize.y = Screen.height;
+        _boundSize.x = Screen.width;
+
+    }
 
     //매 프레임마다 호출되는 함수
     //컴퓨터마다 뽑히는 프레임이 다름을 유의해라.
@@ -32,8 +41,46 @@ public class PlayerMove : MonoBehaviour
         Vector2 normalizedSpeed = dir.normalized * Speed;
         transform.Translate(normalizedSpeed * Speed * Time.deltaTime);
 
+        
+
         //입력처리방식3 : 다음위치 = 현재위치 + 속도 * 시간
         //transform.position = (Vector2)transform.position + dir * Speed * Time.deltaTime;
 
+    }
+
+    private void LateUpdate()
+    {
+        LimitPlayerTransform();
+    }
+
+    private void LimitPlayerTransform()
+    {
+        Vector2 boundSize = new Vector2(_boundSize.x, _boundSize.y / 2);
+        
+        Vector2 bottomLimit = Camera.main.ScreenToWorldPoint(Vector2.zero);
+        Vector2 ceilLimit = Camera.main.ScreenToWorldPoint(boundSize);
+
+        Vector2 newPosition = transform.position;
+
+
+        if(transform.position.x > ceilLimit.x)
+        {
+            newPosition.x = ceilLimit.x;
+        }
+        else if(transform.position.x < bottomLimit.x)
+        {
+            newPosition.x = bottomLimit.x;
+        }
+
+        if (transform.position.y > ceilLimit.y)
+        {
+            newPosition.y = ceilLimit.y;
+        }
+        else if (transform.position.y < bottomLimit.y)
+        {
+            newPosition.y = bottomLimit.y;
+        }
+
+        transform.position = newPosition;
     }
 }
