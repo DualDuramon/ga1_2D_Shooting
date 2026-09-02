@@ -1,29 +1,34 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 //역할 : 키보드 입력에 따라서 플레이어 입력 처리.
 public class PlayerMove : MonoBehaviour
 {
+    private PlayerCommandInvoker _invoker;
     public float Speed = 0.05f;
     public float IncreaseSpeedAmount = 1.0f;
     public float DecreaseSpeedAmount = -1.0f;
 
     private Vector2 _boundSize = Vector2.zero;
 
-    private bool _canReadInput = true;
+    public bool CanReadInput { 
+        get
+        {
+            return _invoker.CanReadInput;
+        } 
+    }
     
     private void Awake()
     {
         _boundSize.y = Screen.height;
         _boundSize.x = Screen.width;
-
+        _invoker = GetComponent<PlayerCommandInvoker>();
     }
 
     //매 프레임마다 호출되는 함수
     //컴퓨터마다 뽑히는 프레임이 다름을 유의해라.
     private void Update()
     {
-        if (!_canReadInput) return;
+        if (!CanReadInput) return;
         
         Move();
         SpeedChange();
@@ -98,10 +103,5 @@ public class PlayerMove : MonoBehaviour
     public void ResetPlayerLocation()
     {
         transform.position = Vector2.zero;
-    }
-
-    public void ToggleInputRead()
-    {
-        _canReadInput = !_canReadInput;
     }
 }

@@ -414,6 +414,8 @@ GameObject:
   - component: {fileID: 841643921}
   - component: {fileID: 841643923}
   - component: {fileID: 841643925}
+  - component: {fileID: 841643927}
+  - component: {fileID: 841643926}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -535,7 +537,32 @@ MonoBehaviour:
   - {fileID: 1270989443}
   - {fileID: 374770326}
   FireCoolTime: 0.3
-  AutometicFire: 1
+  AutometicFire: 0
+--- !u!114 &841643926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841643920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91458a0c7017c0d4287b6924f95b595c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCommandInvoker
+  CanReadInput: 1
+--- !u!114 &841643927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841643920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59a644f5f196bd479313b0d6f11f6b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerReplay
 --- !u!1 &1117487942
 GameObject:
   m_ObjectHideFlags: 0

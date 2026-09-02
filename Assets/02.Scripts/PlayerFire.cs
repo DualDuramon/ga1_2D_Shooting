@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerFire : MonoBehaviour
 {
     //역할 : 스페이스바를 누를때마다 총알을 생성해서 발사하고 싶다.
-    
     //필요 속성
     //  - 총알프리펩
     public GameObject BulletPrefab;
@@ -16,9 +15,19 @@ public class PlayerFire : MonoBehaviour
     private float _lastFireTime = 0f;
     public bool AutometicFire = false;
 
+    private PlayerCommandInvoker _invoker;
+    public bool IsReplaying => !_invoker.CanReadInput;
+
+
+    private void Awake()
+    {
+        _invoker = GetComponent<PlayerCommandInvoker>();
+    }
 
     private void Update()
     {
+        if (IsReplaying) return;
+
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             ToggleFireMode();
@@ -28,12 +37,17 @@ public class PlayerFire : MonoBehaviour
         {
             if(AutometicFire || Input.GetKeyDown(KeyCode.Space))
             {
-                FireMainBullet();
-                FireSideBullet();
-                _lastFireTime = Time.time;
+                ExecuteFire();
             }
         }
     }
+
+    public void ExecuteFire()
+    {
+        FireMainBullet();
+        FireSideBullet();
+        _lastFireTime = Time.time;
+    }    
 
     private void FireMainBullet()
     {
