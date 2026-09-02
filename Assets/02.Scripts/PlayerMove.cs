@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float Speed = 0.05f;
+    public float IncreaseSpeedAmount = 1.0f;
+    public float DecreaseSpeedAmount = -1.0f;
 
     private Vector2 _boundSize = Vector2.zero;
     
@@ -32,6 +34,15 @@ public class PlayerMove : MonoBehaviour
         //    transform.Translate(dir * Speed * Time.deltaTime); //매직넘버 : 보는 사람에 다라 의미가 달라질 수 있는 헷갈리는 숫자
         //}
 
+        if(Input.GetKey(KeyCode.E))
+        {
+            AdjustSpeed(IncreaseSpeedAmount);
+        }
+
+        else if(Input.GetKey(KeyCode.Q))
+        {
+            AdjustSpeed(DecreaseSpeedAmount);
+        }
 
         //입력 처리 방식2
         float h = Input.GetAxisRaw("Horizontal"); //키보드 입력 상태에 따라 -1f ~ 0 ~ 1f를 반환
@@ -42,10 +53,16 @@ public class PlayerMove : MonoBehaviour
         transform.Translate(normalizedSpeed * Speed * Time.deltaTime);
 
 
-
         //입력처리방식3 : 다음위치 = 현재위치 + 속도 * 시간
         //transform.position = (Vector2)transform.position + dir * Speed * Time.deltaTime;
         LimitPlayerTransform();
+    }
+
+    private void AdjustSpeed(float addedSpeed)
+    {
+        Speed += addedSpeed;
+
+        Speed = 0 <= Speed ? Speed : 0; 
     }
 
     private void LimitPlayerTransform()
@@ -56,7 +73,6 @@ public class PlayerMove : MonoBehaviour
         Vector2 ceilLimit = Camera.main.ScreenToWorldPoint(boundSize);
 
         Vector2 newPosition = transform.position;
-
 
         if(transform.position.x > ceilLimit.x)
         {
