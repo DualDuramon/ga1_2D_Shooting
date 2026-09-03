@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     public Vector2 Direction = Vector2.up;
     public float MoveSpeed = 0f;
     public float LifeTime = 1f;
+    public float Damage = 40f;
 
     private float _generatedTime = 0f;
 
@@ -36,7 +37,7 @@ public class Bullet : MonoBehaviour
         {
             //GetComponent<T>() -> 게임 오브젝트가 가지고 있는 컴포넌트를 참조
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            enemy.Health -= 30;
+            enemy.Health -= Damage;
 
             if (enemy.Health <= 0)
             {
