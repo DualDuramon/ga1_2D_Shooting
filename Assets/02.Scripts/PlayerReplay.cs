@@ -2,12 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Collections;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 
 public class PlayerReplay : MonoBehaviour
 {
     private PlayerMove _playerMove;
-    private Queue<ICommand> commandQueue = new Queue<ICommand>();
+    private Queue<ICommand> _commandQueue = new Queue<ICommand>();
 
     private Coroutine Replaycoroutine = null;
     private bool IsReplaying => Replaycoroutine != null;
@@ -34,7 +33,7 @@ public class PlayerReplay : MonoBehaviour
 
     public void AddMoveCommand(ICommand command)
     {
-        commandQueue.Enqueue(command);
+        _commandQueue.Enqueue(command);
     }
 
     private IEnumerator StartReplay()
@@ -43,9 +42,9 @@ public class PlayerReplay : MonoBehaviour
         _playerMove.ResetPlayerLocation();
         float timer = 0.0f;
 
-        while(commandQueue.Count != 0)
+        while(_commandQueue.Count != 0)
         {
-            ICommand cmd = commandQueue.Dequeue();
+            ICommand cmd = _commandQueue.Dequeue();
 
             if(cmd is IHoldCommand)
             {

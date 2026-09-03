@@ -8,7 +8,7 @@ public class PlayerCommandInvoker : MonoBehaviour
 
     private float _startInputTime = 0f;
 
-    public bool CanReadInput = true;
+    public bool CanReadInput { get; private set; } = true;
 
     private Vector2 prevMoveVector = Vector2.zero;
 
