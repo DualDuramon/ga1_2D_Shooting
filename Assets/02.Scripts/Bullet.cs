@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time - _generatedTime >= LifeTime)
+        if (Time.time - _generatedTime >= LifeTime)
         {
             Destroy(gameObject);
             return;

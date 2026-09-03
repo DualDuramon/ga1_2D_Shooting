@@ -1,6 +1,6 @@
 using UnityEngine;
 
-//역할 : 키보드 입력에 따라서 플레이어 입력 처리.
+// 역할 : 키보드 입력에 따라서 플레이어 입력 처리.
 public class PlayerMove : MonoBehaviour
 {
     private PlayerCommandInvoker _invoker;
@@ -10,13 +10,14 @@ public class PlayerMove : MonoBehaviour
 
     private Vector2 _boundSize = Vector2.zero;
 
-    public bool CanReadInput { 
+    public bool CanReadInput
+    {
         get
         {
             return _invoker.CanReadInput;
-        } 
+        }
     }
-    
+
     private void Awake()
     {
         _boundSize.y = Screen.height;
@@ -24,20 +25,20 @@ public class PlayerMove : MonoBehaviour
         _invoker = GetComponent<PlayerCommandInvoker>();
     }
 
-    //매 프레임마다 호출되는 함수
-    //컴퓨터마다 뽑히는 프레임이 다름을 유의해라.
+    // 매 프레임마다 호출되는 함수
+    // 컴퓨터마다 뽑히는 프레임이 다름을 유의해라.
     private void Update()
     {
         if (!CanReadInput) return;
-        
+
         Move();
         SpeedChange();
     }
 
     private void Move()
     {
-        //입력 처리 방식2
-        float h = Input.GetAxisRaw("Horizontal"); //키보드 입력 상태에 따라 -1f ~ 0 ~ 1f를 반환
+        // 입력 처리 방식2
+        float h = Input.GetAxisRaw("Horizontal"); // 키보드 입력 상태에 따라 -1f ~ 0 ~ 1f를 반환
         float v = Input.GetAxisRaw("Vertical");
 
         Vector2 dir = new Vector2(h, v);
@@ -50,7 +51,6 @@ public class PlayerMove : MonoBehaviour
         {
             AdjustSpeed(IncreaseSpeedAmount);
         }
-
         else if (Input.GetKey(KeyCode.Q))
         {
             AdjustSpeed(DecreaseSpeedAmount);
@@ -60,23 +60,23 @@ public class PlayerMove : MonoBehaviour
     private void AdjustSpeed(float addedSpeed)
     {
         Speed += addedSpeed;
-        Speed = 0 <= Speed ? Speed : 0; 
+        Speed = 0 <= Speed ? Speed : 0;
     }
 
     private void LimitPlayerTransform()
     {
         Vector2 boundSize = new Vector2(_boundSize.x, _boundSize.y / 2);
-        
+
         Vector2 bottomLimit = Camera.main.ScreenToWorldPoint(Vector2.zero);
         Vector2 ceilLimit = Camera.main.ScreenToWorldPoint(boundSize);
 
         Vector2 newPosition = transform.position;
 
-        if(transform.position.x > ceilLimit.x)
+        if (transform.position.x > ceilLimit.x)
         {
             newPosition.x = bottomLimit.x;
         }
-        else if(transform.position.x < bottomLimit.x)
+        else if (transform.position.x < bottomLimit.x)
         {
             newPosition.x = ceilLimit.x;
         }

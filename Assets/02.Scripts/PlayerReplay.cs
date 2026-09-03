@@ -1,19 +1,17 @@
-using UnityEngine;
-using System.Collections.Generic;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerReplay : MonoBehaviour
 {
     private PlayerMove _playerMove;
     private Queue<ICommand> _commandQueue = new Queue<ICommand>();
-
-    private Coroutine Replaycoroutine = null;
-    private bool IsReplaying => Replaycoroutine != null;
+    private Coroutine _replayCoroutine = null;
+    private bool IsReplaying => _replayCoroutine != null;
 
     public Action OnReplayStart;
     public Action OnReplayEnd;
-
 
     private void Awake()
     {
@@ -22,11 +20,11 @@ public class PlayerReplay : MonoBehaviour
 
     private void Update()
     {
-        if(!IsReplaying)
+        if (!IsReplaying)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                Replaycoroutine = StartCoroutine(StartReplay());
+                _replayCoroutine = StartCoroutine(StartReplay());
             }
         }
     }
@@ -42,14 +40,14 @@ public class PlayerReplay : MonoBehaviour
         _playerMove.ResetPlayerLocation();
         float timer = 0.0f;
 
-        while(_commandQueue.Count != 0)
+        while (_commandQueue.Count != 0)
         {
             ICommand cmd = _commandQueue.Dequeue();
 
-            if(cmd is IHoldCommand)
+            if (cmd is IHoldCommand)
             {
                 IHoldCommand holdCommand = cmd as IHoldCommand;
-                while(timer <= holdCommand.ExecutedTime)
+                while (timer <= holdCommand.ExecutedTime)
                 {
                     cmd.Execute();
                     timer += Time.deltaTime;
@@ -59,8 +57,8 @@ public class PlayerReplay : MonoBehaviour
             else
             {
                 cmd.Execute();
-            } 
-                
+            }
+
             timer = 0.0f;
         }
 
@@ -69,6 +67,6 @@ public class PlayerReplay : MonoBehaviour
         yield return null;
 
         OnReplayEnd?.Invoke();
-        Replaycoroutine = null;
+        _replayCoroutine = null;
     }
 }
