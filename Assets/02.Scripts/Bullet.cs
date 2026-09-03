@@ -47,12 +47,5 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        //Debug.Log("충돌 하는중이다잉?");
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        //Debug.Log("충돌 끝나따!");
-    }
+
 }
