@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 374770326}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightSideMuzzleLocation (2)
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -296,7 +296,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 597042178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RightMuzzleLocation
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 841643926}
   - component: {fileID: 841643929}
   - component: {fileID: 841643928}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +493,7 @@ Transform:
   m_GameObject: {fileID: 841643920}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.85, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -650,7 +650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1117487943}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftMuzzleLocation
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -681,7 +681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1270989443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LeftSideMuzzleLocation (1)
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -711,10 +711,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1612426313468495923, guid: af07637894856a341ae7e614a34f5d53, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3926023728349763372, guid: af07637894856a341ae7e614a34f5d53, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -772,14 +768,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1612426313468495923, guid: af07637894856a341ae7e614a34f5d53, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2126385594000881159, guid: af07637894856a341ae7e614a34f5d53, type: 3}
-      propertyPath: _speed
-      value: 2.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3926023728349763372, guid: af07637894856a341ae7e614a34f5d53, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
@@ -840,10 +828,6 @@ PrefabInstance:
     - target: {fileID: 3509107027677841450, guid: 3df3aa9f00124f742b70d94a585d705f, type: 3}
       propertyPath: m_Name
       value: ChaseEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5199731178461216175, guid: 3df3aa9f00124f742b70d94a585d705f, type: 3}
-      propertyPath: _speed
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8893773986950968270, guid: 3df3aa9f00124f742b70d94a585d705f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -955,14 +939,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1612426313468495923, guid: af07637894856a341ae7e614a34f5d53, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2126385594000881159, guid: af07637894856a341ae7e614a34f5d53, type: 3}
-      propertyPath: _speed
-      value: 2.1
-      objectReference: {fileID: 0}
     - target: {fileID: 3926023728349763372, guid: af07637894856a341ae7e614a34f5d53, type: 3}
       propertyPath: m_Name
       value: Enemy

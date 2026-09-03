@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2126385594000881159}
   - component: {fileID: 6252108864133988467}
   - component: {fileID: 1612426313468495923}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   _moveDirection: {x: 0, y: -1}
   _speed: 2.1
+  Health: 100
 --- !u!61 &6252108864133988467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -180,4 +181,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

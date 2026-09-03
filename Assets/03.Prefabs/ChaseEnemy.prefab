@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3646090630295375234}
   - component: {fileID: 4484536405203020864}
   - component: {fileID: 5199731178461216175}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ChaseEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -179,3 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9791c1daf7d5feb4da385deca8ba8462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChaseEnemy
+  _moveDirection: {x: 0, y: -1}
+  _speed: 5
+  Health: 100
+  _targetPlayer: {fileID: 0}
