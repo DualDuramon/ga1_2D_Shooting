@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private Vector2 _moveDirection = Vector2.down;
     [SerializeField] private float _speed = 1.0f;
+    public float Health = 100f;
 
     private void Start()
     {
@@ -20,4 +21,8 @@ public class Enemy : MonoBehaviour
         transform.Translate(_moveDirection * _speed * Time.deltaTime);
     }
 
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }

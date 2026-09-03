@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Vector2 Direction = Vector2.up;
-    public float Speed = 0f;
+    public float MoveSpeed = 0f;
     public float LifeTime = 1f;
 
     private float _generatedTime = 0f;
@@ -20,13 +20,38 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        transform.Translate(Direction * Speed * Time.deltaTime);
+        transform.Translate(Direction * MoveSpeed * Time.deltaTime);
     }
 
     public void SetUp(Vector2 dir, float speed, float lifeTime)
     {
         Direction = dir;
-        Speed = speed;
+        MoveSpeed = speed;
         LifeTime = lifeTime;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            //GetComponent<T>() -> 게임 오브젝트가 가지고 있는 컴포넌트를 참조
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            enemy.Health -= 30;
+
+            if (enemy.Health <= 0)
+            {
+                enemy.Die();
+            }
+
+            Destroy(gameObject);
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        //Debug.Log("충돌 하는중이다잉?");
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //Debug.Log("충돌 끝나따!");
     }
 }
