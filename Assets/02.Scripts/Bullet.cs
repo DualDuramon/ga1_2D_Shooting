@@ -37,11 +37,9 @@ public class Bullet : MonoBehaviour
         {
             //GetComponent<T>() -> 게임 오브젝트가 가지고 있는 컴포넌트를 참조
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            enemy.Health -= Damage;
-
-            if (enemy.Health <= 0)
+            if (enemy != null)
             {
-                enemy.Die();
+                enemy.TakeDamage(Damage);
             }
 
             Destroy(gameObject);
