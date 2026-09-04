@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a338da3404da2254e854ad772734460d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyItemGenerator
+  _maxItemSpawnRate: 30
   _itemPrefabs:
   - {fileID: 7002630043061750560, guid: 6880296174ddc1f408447f3b5c58cc41, type: 3}
   - {fileID: 3878565270494544314, guid: 13bfa91297c39674f9db20fdecf18a10, type: 3}
