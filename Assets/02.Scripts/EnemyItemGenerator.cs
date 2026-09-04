@@ -2,12 +2,18 @@ using UnityEngine;
 
 public class EnemyItemGenerator : MonoBehaviour
 {
+    [SerializeField] private int _maxItemSpawnRate;
     [SerializeField] private Item[] _itemPrefabs;
 
-    public void GenerateRandomItem()
+    public void SpawnItemRandomly()
     {
-        int randomIndex = Random.Range(0, 3);
+        int randomPercent = Random.Range(0, 100);
+        if (randomPercent < _maxItemSpawnRate)
+        {
+            return;
+        }
 
-        Instantiate(_itemPrefabs[randomIndex], transform.position, Quaternion.identity);
+        int randomItemIndex = Random.Range(0, 3);
+        Instantiate(_itemPrefabs[randomItemIndex], transform.position, Quaternion.identity);
     }
 }

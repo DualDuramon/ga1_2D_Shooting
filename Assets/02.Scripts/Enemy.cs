@@ -65,10 +65,6 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        int randomNum = Random.Range(0, 100);
-        if (randomNum < 30)
-        {
-            _generator.GenerateRandomItem();
-        }
+        _generator.SpawnItemRandomly();
     }
 }
