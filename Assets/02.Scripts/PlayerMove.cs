@@ -5,9 +5,6 @@ public class PlayerMove : MonoBehaviour
 {
     private PlayerCommandInvoker _invoker;
     private PlayerStatus _status;
-    public float Speed = 0.05f;
-    public float IncreaseSpeedAmount = 1.0f;
-    public float DecreaseSpeedAmount = -1.0f;
 
     private Vector2 _boundSize = Vector2.zero;
 
@@ -34,7 +31,6 @@ public class PlayerMove : MonoBehaviour
         if (!CanReadInput) return;
 
         Move();
-        SpeedChange();
     }
 
     private void Move()
@@ -45,23 +41,6 @@ public class PlayerMove : MonoBehaviour
 
         Vector2 dir = new Vector2(h, v);
         ExecutePlayerMove(dir);
-    }
-
-    private void SpeedChange()
-    {
-        if (Input.GetKey(KeyCode.E))
-        {
-            AdjustSpeed(IncreaseSpeedAmount);
-        }
-        else if (Input.GetKey(KeyCode.Q))
-        {
-            AdjustSpeed(DecreaseSpeedAmount);
-        }
-    }
-
-    private void AdjustSpeed(float addedSpeed)
-    {
-        _status.AdjustSpeed(addedSpeed);
     }
 
     private void LimitPlayerTransform()
@@ -97,7 +76,7 @@ public class PlayerMove : MonoBehaviour
     public void ExecutePlayerMove(Vector2 direction)
     {
         Vector2 normalizedSpeed = direction.normalized;
-        transform.Translate(normalizedSpeed * Speed * Time.deltaTime);
+        transform.Translate(normalizedSpeed * _status.MoveSpeed * Time.deltaTime);
         LimitPlayerTransform();
     }
 

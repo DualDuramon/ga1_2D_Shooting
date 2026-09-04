@@ -4,6 +4,11 @@ public class ChaseEnemy : RushEnemy
 {
     [SerializeField] protected PlayerMove _targetPlayer;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        Initialize();
+    }
     protected override void Initialize()
     {
         _targetPlayer = FindAnyObjectByType<PlayerMove>();

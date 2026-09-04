@@ -30,7 +30,7 @@ public class PlayerStatus : MonoBehaviour
         _health = _health + healAmount;
     }
 
-    public void AdjustSpeed(float addedSpeed)
+    public void AdjustMoveSpeed(float addedSpeed)
     {
         _moveSpeed += addedSpeed;
         _moveSpeed = 0 <= _moveSpeed ? _moveSpeed : 0;
