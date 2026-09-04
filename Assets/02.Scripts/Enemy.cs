@@ -2,13 +2,35 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Movement Variables")]
     [SerializeField] protected Vector2 _moveDirection = Vector2.down;
     [SerializeField] private float _speed = 1.0f;
     [SerializeField] private float _health = 100f;
 
+    [Header("Combat Variables")]
+    [SerializeField] private float _attackDamage = 300f;
+    [SerializeField] private LayerMask damagableLayers;
+
+    protected virtual void Awake()
+    {
+        damagableLayers = LayerMask.GetMask("Player");
+    }
+
     protected virtual void Update()
     {
         Move();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (((1 << other.gameObject.layer) & damagableLayers) != 0)
+        {
+            if (other.gameObject.TryGetComponent(out PlayerHealth player))
+            {
+                player.TakeDamage(_attackDamage);
+            }
+            Die();
+        }
     }
 
     private void Move()

@@ -61,7 +61,7 @@ jobs: # 뭘 진행할거야?
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} #enter gemini api key
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          model: 'gemini-3-flash'
+          gemini_model: 'gemini-3-flash'
           gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
           prompt: |
             현재 저장소의 최신 커밋을 코드 리뷰하세요.

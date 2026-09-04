@@ -18,6 +18,17 @@ public class PlayerReplay : MonoBehaviour
         _playerMove = GetComponent<PlayerMove>();
     }
 
+    private void OnDestroy()
+    {
+        if (IsReplaying)
+        {
+            OnReplayEnd.Invoke();
+            StopCoroutine(_replayCoroutine);
+            _replayCoroutine = null;
+        }
+        _commandQueue.Clear();
+    }
+
     private void Update()
     {
         if (!IsReplaying)

@@ -2,20 +2,22 @@ using UnityEngine;
 
 public class RushEnemy : Enemy
 {
-    [SerializeField] protected PlayerMove _targetPlayer;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         Initialize();
     }
 
     protected virtual void Initialize()
     {
-        _targetPlayer = FindAnyObjectByType<PlayerMove>();
+        PlayerMove _targetPlayer = FindAnyObjectByType<PlayerMove>();
 
         CalculateMoveDirection(_targetPlayer.transform);
         Debug.Log($"{gameObject.name} : ¿Ã¥œº»∂Û¿Ã¬° ≥°");
     }
+
+
 
     protected void CalculateMoveDirection(Transform targetTransform)
     {

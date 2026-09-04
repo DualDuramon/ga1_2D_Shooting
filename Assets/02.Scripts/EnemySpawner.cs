@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnEnemy(_enemyprefab);
             _timer = 0f;
-            Debug.Log("에네미 스폰");
+            _spawnInterval = Random.Range(1f, 3f);
         }
     }
 
