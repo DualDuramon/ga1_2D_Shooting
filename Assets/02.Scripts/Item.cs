@@ -23,7 +23,7 @@ public abstract class Item : MonoBehaviour
         }
         else
         {
-            _timer += Time.time;
+            _timer += Time.deltaTime;
         }
     }
 

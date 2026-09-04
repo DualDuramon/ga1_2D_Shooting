@@ -6,7 +6,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] private float _health = 100f;
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _fireCoolTime = 0.3f;
-    [SerializeField] private const float _fireMinCoolTime = 0.1f;
+    private const float _fireMinCoolTime = 0.1f;
 
 
     public float MoveSpeed { get { return _moveSpeed; } }
@@ -27,7 +27,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void Heal(float healAmount)
     {
-        TakeDamage(-healAmount);
+        _health = _health + healAmount;
     }
 
     public void AdjustSpeed(float addedSpeed)
