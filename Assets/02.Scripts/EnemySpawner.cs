@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
     // - 생성할 프리펩
     [Header("Spawned Enemy Prefab")]
     [SerializeField] private Enemy[] _enemyPrefabs = new Enemy[3];    //프리펩을 연결하면, 이 컴포넌트를 가진 오브젝트를 연결 & 컴포넌트 참조 시킴.
-    [SerializeField] private int[] probablityOfSpawnEnemies;
+    [SerializeField] private int[] _enemySpawnProbabilities;
 
     private void Update()
     {
@@ -38,9 +38,9 @@ public class EnemySpawner : MonoBehaviour
         int calculatedProb = Random.Range(0, 100);
         Enemy spawnEnemy = null;
 
-        for (int i = 0; i < probablityOfSpawnEnemies.Length; i++)
+        for (int i = 0; i < _enemySpawnProbabilities.Length; i++)
         {
-            if (calculatedProb < probablityOfSpawnEnemies[i])
+            if (calculatedProb < _enemySpawnProbabilities[i])
             {
                 spawnEnemy = _enemyPrefabs[i];
                 break;
