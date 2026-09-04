@@ -7,6 +7,11 @@ public class ChaseEnemy : RushEnemy
     protected override void Initialize()
     {
         _targetPlayer = FindAnyObjectByType<PlayerMove>();
+        if (_targetPlayer == null)
+        {
+            Debug.Log("Player Not Find");
+            return;
+        }
 
         CalculateMoveDirection(_targetPlayer.transform);
         Debug.Log($"{gameObject.name} : 이니셜라이징 끝");
