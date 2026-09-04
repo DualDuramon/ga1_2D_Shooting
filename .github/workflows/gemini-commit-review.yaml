@@ -1,11 +1,12 @@
 name: Gemini Commit Review
-on: #언제?
-  push: # 푸쉬할때
-    branches: #어떤브랜치?
+
+on: # 언제?
+  push: # Push할 때
+    branches: # 어떤 브랜치?
       - main
-    paths: #어떤 경로 및 파일들?
+    paths: # 어떤 경로 및 파일들?
       - 'Assets/02.Scripts/**/*.cs'
-  workflow_dispatch: #아래 내용을 진행한다.
+  workflow_dispatch: # 수동 실행 가능
 
 permissions:
   contents: write
@@ -14,7 +15,7 @@ concurrency:
   group: gemini-commit-review-${{ github.ref }}
   cancel-in-progress: false
 
-jobs: # 뭘 진행할거야?
+jobs: # 뭘 진행할 거야?
   review:
     name: Review C# commit
     runs-on: ubuntu-latest
@@ -53,21 +54,21 @@ jobs: # 뭘 진행할거야?
             exit 1
           fi
 
-        - name: Run Gemini review
+      - name: Run Gemini review
         id: gemini_review
         uses: google-github-actions/run-gemini-cli@v0.1.22
         env:
-        GEMINI_CLI_TRUST_WORKSPACE: 'true'
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        GITHUB_TOKEN: ${{ github.token }}
+          GEMINI_CLI_TRUST_WORKSPACE: 'true'
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-        gemini_model: 'gemini-3.1-flash-lite'
-        gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-        prompt: |
+          gemini_model: 'gemini-3.1-flash-lite'
+          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+          prompt: |
             현재 저장소의 최신 커밋을 코드 리뷰하세요.
 
             반드시 먼저 commit.diff 파일을 읽고, 그 안에 포함된 C# 변경사항을 검토하세요.
-            저장소의 GEMINI.md와 GEMINI.md에서 가져온 리뷰 기준을 반드시 적용하세요.
+            저장소 루트의 GEMINI.md를 읽고, 해당 문서에 정의된 프로젝트 규칙과 리뷰 기준을 반드시 적용하세요.
 
             변경된 코드의 버그, 예외 가능성, Unity 생명주기 문제,
             성능 문제, 메모리 할당, 설계 및 가독성을 검토하세요.
