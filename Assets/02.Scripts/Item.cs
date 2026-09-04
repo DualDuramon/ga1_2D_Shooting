@@ -6,7 +6,8 @@ public abstract class Item : MonoBehaviour
     [SerializeField] private float _timeToActivate = 3f;
     [SerializeField] private float _timer = 0f;
     [SerializeField] private Vector2 _moveDirection = Vector2.down;
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private PlayerStatus _targetStatus;
 
 
     private void Start()
@@ -47,12 +48,28 @@ public abstract class Item : MonoBehaviour
 
     private void InitializeParameters()
     {
-        PlayerMove player = FindFirstObjectByType<PlayerMove>();
-        _moveDirection = (player != null) ? (player.transform.position - transform.position).normalized : Vector2.down;
+        _targetStatus = FindFirstObjectByType<PlayerStatus>();
+
+        if (_targetStatus == null)
+        {
+            Debug.LogWarning($"{gameObject.name} : InitializeFail, Can't Find Player!");
+        }
+    }
+
+    private void CalculateMoveDirection()
+    {
+        if (_targetStatus == null)
+        {
+            Debug.LogWarning($"{gameObject.name} : Can't Find Player!");
+            return;
+        }
+
+        _moveDirection = (_targetStatus != null) ? (_targetStatus.transform.position - transform.position).normalized : _moveDirection;
     }
 
     private void Move()
     {
+        CalculateMoveDirection();
         transform.Translate(_moveDirection * _moveSpeed * Time.deltaTime);
     }
 
