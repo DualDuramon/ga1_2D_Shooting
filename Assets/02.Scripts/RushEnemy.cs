@@ -12,7 +12,9 @@ public class RushEnemy : Enemy
     protected virtual void Initialize()
     {
         _targetPlayer = FindAnyObjectByType<PlayerMove>();
+
         CalculateMoveDirection(_targetPlayer.transform);
+        Debug.Log($"{gameObject.name} : ¿Ã¥œº»∂Û¿Ã¬° ≥°");
     }
 
     protected void CalculateMoveDirection(Transform targetTransform)
