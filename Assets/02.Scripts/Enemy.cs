@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
     {
         if (((1 << other.gameObject.layer) & damagableLayers) != 0)
         {
-            if (other.gameObject.TryGetComponent(out PlayerHealth player))
+            if (other.gameObject.TryGetComponent(out PlayerStatus player))
             {
                 player.TakeDamage(_attackDamage);
             }

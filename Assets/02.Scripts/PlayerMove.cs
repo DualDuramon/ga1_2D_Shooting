@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private PlayerCommandInvoker _invoker;
+    private PlayerStatus _status;
     public float Speed = 0.05f;
     public float IncreaseSpeedAmount = 1.0f;
     public float DecreaseSpeedAmount = -1.0f;
@@ -23,6 +24,7 @@ public class PlayerMove : MonoBehaviour
         _boundSize.y = Screen.height;
         _boundSize.x = Screen.width;
         _invoker = GetComponent<PlayerCommandInvoker>();
+        _status = GetComponent<PlayerStatus>();
     }
 
     // 매 프레임마다 호출되는 함수
@@ -59,8 +61,7 @@ public class PlayerMove : MonoBehaviour
 
     private void AdjustSpeed(float addedSpeed)
     {
-        Speed += addedSpeed;
-        Speed = 0 <= Speed ? Speed : 0;
+        _status.AdjustSpeed(addedSpeed);
     }
 
     private void LimitPlayerTransform()

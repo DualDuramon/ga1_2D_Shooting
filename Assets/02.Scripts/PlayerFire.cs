@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerFire : MonoBehaviour
 {
+    [SerializeField] private PlayerStatus _status;
     // 역할 : 스페이스바를 누를때마다 총알을 생성해서 발사하고 싶다.
     // 필요 속성
     // - 총알프리팹
@@ -11,7 +12,6 @@ public class PlayerFire : MonoBehaviour
     // - 생성위치(총구)
     public Transform[] MuzzleLocation;
     public Transform[] SideMuzzleLocation;
-    public float FireCoolTime = 0.3f;
 
     private float _lastFireTime = 0f;
     public bool AutomaticFire = false;
@@ -21,6 +21,7 @@ public class PlayerFire : MonoBehaviour
 
     private void Awake()
     {
+        _status = GetComponent<PlayerStatus>();
         _invoker = GetComponent<PlayerCommandInvoker>();
     }
 
@@ -33,13 +34,18 @@ public class PlayerFire : MonoBehaviour
             ToggleFireMode();
         }
 
-        if (Time.time - _lastFireTime > FireCoolTime)
+        if (CanFire())
         {
             if (AutomaticFire || Input.GetKeyDown(KeyCode.Space))
             {
                 ExecuteFire();
             }
         }
+    }
+
+    private bool CanFire()
+    {
+        return Time.time - _lastFireTime > _status.FireCoolTime;
     }
 
     public void ExecuteFire()
