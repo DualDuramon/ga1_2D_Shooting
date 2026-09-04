@@ -14,7 +14,6 @@ public class RushEnemy : Enemy
         PlayerMove _targetPlayer = FindAnyObjectByType<PlayerMove>();
 
         CalculateMoveDirection(_targetPlayer.transform);
-        Debug.Log($"{gameObject.name} : ¿Ã¥œº»∂Û¿Ã¬° ≥°");
     }
 
 

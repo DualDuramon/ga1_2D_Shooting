@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     {
         _health = _health - damageAmount;
 
+
         if (_health < 0f)
         {
             Die();
@@ -20,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         OnDeath?.Invoke();
+        Debug.Log("플레이어가 죽었슴!");
         Destroy(gameObject);
     }
 
