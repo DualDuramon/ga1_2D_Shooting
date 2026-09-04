@@ -53,17 +53,17 @@ jobs: # 뭘 진행할거야?
             exit 1
           fi
 
-      - name: Run Gemini review
+        - name: Run Gemini review
         id: gemini_review
         uses: google-github-actions/run-gemini-cli@v0.1.22
         env:
-          GEMINI_CLI_TRUST_WORKSPACE: 'true'
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }} #enter gemini api key
-          GITHUB_TOKEN: ${{ github.token }}
+        GEMINI_CLI_TRUST_WORKSPACE: 'true'
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        GITHUB_TOKEN: ${{ github.token }}
         with:
-          gemini_model: 'gemini-3.1-flash-lite'
-          gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
-          prompt: |
+        gemini_model: 'gemini-3.1-flash-lite'
+        gemini_api_key: ${{ secrets.GEMINI_API_KEY }}
+        prompt: |
             현재 저장소의 최신 커밋을 코드 리뷰하세요.
 
             반드시 먼저 commit.diff 파일을 읽고, 그 안에 포함된 C# 변경사항을 검토하세요.
