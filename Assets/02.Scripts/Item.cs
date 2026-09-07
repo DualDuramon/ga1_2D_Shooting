@@ -58,6 +58,11 @@ public abstract class Item : MonoBehaviour
     private void InitializeParameters()
     {
         _animator = GetComponent<Animator>();
+        if (_animator == null)
+        {
+            Debug.LogWarning($"{gameObject.name} : don't have animator component!");
+        }
+
         _targetStatus = FindFirstObjectByType<PlayerStatus>();
 
         if (_targetStatus == null)

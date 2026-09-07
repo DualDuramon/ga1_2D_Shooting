@@ -54,8 +54,19 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        TriggerHitAnimation();
+    }
+
+    private void TriggerHitAnimation()
+    {
+        if (_animator == null)
+        {
+            Debug.Log($"{gameObject.name} : don't have animator component!");
+            return;
+        }
         _animator.SetTrigger(HitTrigger);
     }
+
     private void Die()
     {
         GenerateItemRandomly();
