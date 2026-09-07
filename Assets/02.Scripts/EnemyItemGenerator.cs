@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class EnemyItemGenerator : MonoBehaviour
 {
-    [SerializeField] private int _maxItemSpawnRate;
+    [SerializeField] private int _itemSpawnRate;
     [SerializeField] private Item[] _itemPrefabs;
 
     public void SpawnItemRandomly()
     {
         int randomPercent = Random.Range(0, 100);
-        if (randomPercent < _maxItemSpawnRate)
+        if (randomPercent >= _itemSpawnRate)
         {
             return;
         }
