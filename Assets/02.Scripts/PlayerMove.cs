@@ -3,6 +3,8 @@ using UnityEngine;
 // 역할 : 키보드 입력에 따라서 플레이어 입력 처리.
 public class PlayerMove : MonoBehaviour
 {
+
+    [SerializeField] private Animator _animator;
     private PlayerCommandInvoker _invoker;
     private PlayerStatus _status;
 
@@ -22,6 +24,7 @@ public class PlayerMove : MonoBehaviour
         _boundSize.x = Screen.width;
         _invoker = GetComponent<PlayerCommandInvoker>();
         _status = GetComponent<PlayerStatus>();
+        _animator = GetComponent<Animator>();
     }
 
     // 매 프레임마다 호출되는 함수
@@ -41,6 +44,7 @@ public class PlayerMove : MonoBehaviour
 
         Vector2 dir = new Vector2(h, v);
         ExecutePlayerMove(dir);
+        _animator.SetInteger("dirX", (int)dir.x);
     }
 
     private void LimitPlayerTransform()
