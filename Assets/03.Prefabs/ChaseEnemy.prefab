@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4484536405203020864}
   - component: {fileID: 5199731178461216175}
   - component: {fileID: 5006750177641862040}
+  - component: {fileID: 1240484740732740089}
   m_Layer: 6
   m_Name: ChaseEnemy
   m_TagString: Enemy
@@ -85,8 +86,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9575472, g: 0.7996298, b: 0.70912695, a: 1}
+  m_Sprite: {fileID: -8421458170528590454, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,7 +134,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.3333334, y: 1.125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -188,6 +189,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _generator: {fileID: 0}
+  _animator: {fileID: 0}
   _targetPlayer: {fileID: 0}
 --- !u!114 &5006750177641862040
 MonoBehaviour:
@@ -206,3 +208,25 @@ MonoBehaviour:
   - {fileID: 7002630043061750560, guid: 6880296174ddc1f408447f3b5c58cc41, type: 3}
   - {fileID: 3878565270494544314, guid: 13bfa91297c39674f9db20fdecf18a10, type: 3}
   - {fileID: 2594485990840524443, guid: 764dc0dcfb5655b4bb6f969027d28a87, type: 3}
+--- !u!95 &1240484740732740089
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3509107027677841450}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 067cd9a61cdef4b45b55fe162d4319e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

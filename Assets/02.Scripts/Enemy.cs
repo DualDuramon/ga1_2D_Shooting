@@ -13,10 +13,14 @@ public class Enemy : MonoBehaviour
 
     [Header("ItemGenerate")]
     [SerializeField] private EnemyItemGenerator _generator;
+    [Header("Animator Parameters")]
+    [SerializeField] private Animator _animator;
+    private const string HitTrigger = "HitTrigger";
 
     protected virtual void Awake()
     {
         _generator = GetComponent<EnemyItemGenerator>();
+        _animator = GetComponent<Animator>();
         _damagableLayers = LayerMask.GetMask("Player");
     }
 
@@ -50,6 +54,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        _animator.SetTrigger(HitTrigger);
     }
     private void Die()
     {

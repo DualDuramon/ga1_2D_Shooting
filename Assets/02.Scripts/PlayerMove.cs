@@ -5,6 +5,8 @@ public class PlayerMove : MonoBehaviour
 {
 
     [SerializeField] private Animator _animator;
+    private const string Dir_X = "dirX";
+
     private PlayerCommandInvoker _invoker;
     private PlayerStatus _status;
 
@@ -44,7 +46,7 @@ public class PlayerMove : MonoBehaviour
 
         Vector2 dir = new Vector2(h, v);
         ExecutePlayerMove(dir);
-        _animator.SetInteger("dirX", (int)dir.x);
+        _animator.SetInteger(Dir_X, (int)dir.x);
     }
 
     private void LimitPlayerTransform()

@@ -3,8 +3,9 @@ using UnityEngine;
 public abstract class Item : MonoBehaviour
 {
     [Header("Item Basic Setting")]
-    [SerializeField] private float _timeToActivate = 3f;
+    [SerializeField] private Animator _animator;
     [SerializeField] private PlayerStatus _targetStatus;
+    [SerializeField] private float _timeToActivate = 3f;
 
     private float _activateTimer;
     private float _moveTimer;
@@ -56,6 +57,7 @@ public abstract class Item : MonoBehaviour
 
     private void InitializeParameters()
     {
+        _animator = GetComponent<Animator>();
         _targetStatus = FindFirstObjectByType<PlayerStatus>();
 
         if (_targetStatus == null)
