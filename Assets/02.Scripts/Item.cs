@@ -4,17 +4,16 @@ public abstract class Item : MonoBehaviour
 {
     [Header("Item Basic Setting")]
     [SerializeField] private float _timeToActivate = 3f;
-
-    [Header("Bezier Setting")]
-    [SerializeField] private float _moveDuration = 0.5f;
-    [SerializeField] private float _curveAmount = 2f;
-
     [SerializeField] private PlayerStatus _targetStatus;
 
     private float _activateTimer;
     private float _moveTimer;
 
     private bool _isMoving;
+
+    [Header("Bezier Setting")]
+    [SerializeField] private float _moveDuration = 0.5f;
+    [SerializeField] private float _curveAmount = 2f;
 
     private Vector2 _startPosition;
     private Vector2 _controlPoint;

@@ -13,6 +13,7 @@ public class EnemyItemGenerator : MonoBehaviour
             return;
         }
 
+        //TODO : ScriptableObject를 사용해서 리펙토링
         int randomItemIndex = Random.Range(0, 3);
         Instantiate(_itemPrefabs[randomItemIndex], transform.position, Quaternion.identity);
     }

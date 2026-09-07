@@ -42,7 +42,6 @@ public class PlayerStatus : MonoBehaviour
         _fireCoolTime = (_fireMinCoolTime <= _fireCoolTime) ? _fireCoolTime : _fireMinCoolTime;
     }
 
-
     private void Die()
     {
         OnDeath?.Invoke();

@@ -14,6 +14,7 @@ public class RushEnemy : Enemy
         if (_targetPlayer == null)
         {
             Debug.Log($"{gameObject.name} : 플레이어를 찾을 수 없음");
+            return;
         }
 
         CalculateMoveDirection(_targetPlayer.transform);
