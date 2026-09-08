@@ -6,9 +6,8 @@ public class PlayerEffect : MonoBehaviour
     [Header("References")]
     [SerializeField] private PlayerStatus _status;
 
-    [Header("Particle Prefabs")]
+    [Header("Particle References")]
     [SerializeField] private GameObject _deathEffect;
-
 
     private void Awake()
     {
@@ -36,7 +35,6 @@ public class PlayerEffect : MonoBehaviour
             Debug.LogWarning($"{gameObject.name} : Can't Generate DeathParticle. Need particle prefab");
             return;
         }
-
         Instantiate(_deathEffect, transform.position, Quaternion.identity);
     }
 }
