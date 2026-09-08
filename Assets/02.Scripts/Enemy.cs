@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
 
     [Header("ItemGenerate")]
     [SerializeField] private EnemyItemGenerator _generator;
+
     [Header("Animator Parameters")]
     [SerializeField] private Animator _animator;
     private const string HitTrigger = "HitTrigger";

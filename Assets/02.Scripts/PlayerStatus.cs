@@ -5,13 +5,21 @@ public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] private float _health = 100f;
     [SerializeField] private float _moveSpeed = 5f;
-    [SerializeField] private float _fireCoolTime = 0.3f;
+    [SerializeField] private float _fireRate = 0.3f;
     private const float _fireMinCoolTime = 0.1f;
 
 
+    //캡슐화 : 데이터 은닉(health를 private 처리) + 행위를 통한 상태 변경(TakeDamage()와 Heal())
+    //getter or setter : 특정 데이터를 get or set 해주는 메서드
     public float MoveSpeed { get { return _moveSpeed; } }
-    public float FireCoolTime { get { return _fireCoolTime; } }
-
+    public float FireRate { get { return _fireRate; } }
+    public float CurrentHealth => _health;
+    //{
+    //    get
+    //    { 
+    //        return _health; //get만 있으면 읽기전용 , set만 있으면 쓰기전용 프로퍼티. 둘다 있으면 프로퍼티 라 부른다. 단순데이터의 +set아니면 웬만하면 쓰지마라
+    //    }
+    //}
     public Action OnDeath;
 
     public void TakeDamage(float damageAmount)
@@ -38,8 +46,8 @@ public class PlayerStatus : MonoBehaviour
 
     public void AdjustFireDuration(float addedDuration)
     {
-        _fireCoolTime += addedDuration;
-        _fireCoolTime = (_fireMinCoolTime <= _fireCoolTime) ? _fireCoolTime : _fireMinCoolTime;
+        _fireRate += addedDuration;
+        _fireRate = (_fireMinCoolTime <= _fireRate) ? _fireRate : _fireMinCoolTime;
     }
 
     private void Die()

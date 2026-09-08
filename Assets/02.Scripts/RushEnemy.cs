@@ -18,6 +18,7 @@ public class RushEnemy : Enemy
         }
 
         CalculateMoveDirection(_targetPlayer.transform);
+        RotateToward(_moveDirection);
     }
 
     protected void CalculateMoveDirection(Transform targetTransform)
@@ -29,8 +30,6 @@ public class RushEnemy : Enemy
         }
         Vector2 calculatedDirection = targetTransform.position - transform.position;
         _moveDirection = calculatedDirection.normalized;
-
-        RotateToward(_moveDirection);
     }
 
     private void RotateToward(Vector2 to)
