@@ -10,8 +10,27 @@ public class Bomb : MonoBehaviour
 
     [Header("Effect Setting")]
     [SerializeField] private Transform _trailTransform;
-    [SerializeField] private float _minDistance = -2f;
-    [SerializeField] private float _maxDistance = -1f;
+
+    [SerializeField] private float _minDistance = 1f;
+    [SerializeField] private float _maxDistance = 2f;
+
+    [SerializeField] private float _rotateSpeed = 180f;
+    [SerializeField] private float _radiusChangeSpeed = 2f;
+
+    private float _currentAngle;
+
+    private void Update()
+    {
+        _lifeTime += Time.deltaTime;
+
+        if (_lifeTime >= _maxLifeTime)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        CalculateTrailPosition();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,24 +43,21 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void CalculateTrailPosition()
     {
-        if (_maxLifeTime <= _lifeTime)
+        if (_trailTransform == null)
         {
-            Destroy(gameObject);
+            return;
         }
-        else
-        {
-            _lifeTime += Time.deltaTime;
-            CalculateRandomTrailPosition();
-        }
-    }
 
-    private void CalculateRandomTrailPosition()
-    {
-        if (_trailTransform == null) return;
+        _currentAngle += _rotateSpeed * Time.deltaTime;
 
-        float randomDistance = Random.Range(_minDistance, _maxDistance);
-        _trailTransform.localPosition = new Vector2(randomDistance, 0f);
+        float radian = _currentAngle * Mathf.Deg2Rad;
+        float radiusT = (Mathf.Sin(Time.time * _radiusChangeSpeed) + 1f) * 0.5f;
+        float radius = Mathf.Lerp(_minDistance, _maxDistance, radiusT);
+
+        Vector2 targetPosition = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian)) * radius;
+
+        _trailTransform.localPosition = targetPosition;
     }
 }
