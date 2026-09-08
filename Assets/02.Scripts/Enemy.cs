@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Effect Referrences")]
     [SerializeField] private GameObject deathFxPrefab;
+    [SerializeField] private float effectScale = 1f;
 
     protected virtual void Awake()
     {
@@ -80,7 +81,8 @@ public class Enemy : MonoBehaviour
 
     private void SpawnDeathEffect()
     {
-        Instantiate(deathFxPrefab, transform.position, Quaternion.identity);
+        GameObject effect = Instantiate(deathFxPrefab, transform.position, Quaternion.identity);
+        effect.transform.localScale = new Vector3(effectScale, effectScale, effectScale);
     }
 
     private void GenerateItemRandomly()

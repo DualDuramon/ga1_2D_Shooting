@@ -191,6 +191,7 @@ MonoBehaviour:
   _generator: {fileID: 0}
   _animator: {fileID: 0}
   deathFxPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+  effectScale: 0.5
 --- !u!114 &8375126813923759547
 MonoBehaviour:
   m_ObjectHideFlags: 0
