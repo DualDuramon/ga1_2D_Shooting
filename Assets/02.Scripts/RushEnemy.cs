@@ -27,8 +27,15 @@ public class RushEnemy : Enemy
             Debug.LogError($"{transform.name} : target이 사라졌습니다.");
             return;
         }
-        Vector2 CalculatedDirection = targetTransform.position - transform.position;
-        _moveDirection = CalculatedDirection.normalized;
+        Vector2 calculatedDirection = targetTransform.position - transform.position;
+        _moveDirection = calculatedDirection.normalized;
+
+        RotateToward(_moveDirection);
     }
 
+    private void RotateToward(Vector2 to)
+    {
+        float rotateAngle = Mathf.Atan2(_moveDirection.y, _moveDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rotateAngle + 90f);
+    }
 }
