@@ -45,8 +45,7 @@ public class PlayerFire : MonoBehaviour
 
     private bool CanFire()
     {
-        return false;
-        //return Time.time - _lastFireTime > _status.FireCoolTime;
+        return Time.time - _lastFireTime > _status.FireRate;
     }
 
     public void ExecuteFire()
