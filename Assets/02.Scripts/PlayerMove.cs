@@ -3,7 +3,6 @@ using UnityEngine;
 // 역할 : 키보드 입력에 따라서 플레이어 입력 처리.
 public class PlayerMove : MonoBehaviour
 {
-
     [SerializeField] private Animator _animator;
     private const string Dir_X = "dirX";
 
