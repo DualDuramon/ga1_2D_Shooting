@@ -28,6 +28,7 @@ public class ChaseEnemy : RushEnemy
         {
             base.Update();
             CalculateMoveDirection(_targetPlayer.transform);
+            RotateToward(_moveDirection);
         }
     }
 }
