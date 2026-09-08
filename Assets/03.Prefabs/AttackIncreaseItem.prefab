@@ -88,6 +88,8 @@ MonoBehaviour:
   _timeToActivate: 3
   _moveDuration: 0.5
   _curveAmount: 2
+  _takeParticle: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
+  _effectScale: 0.3
   _adjustAmount: -0.2
 --- !u!95 &6628242586210419201
 Animator:

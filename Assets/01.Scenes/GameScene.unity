@@ -1484,10 +1484,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChaseEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 5199731178461216175, guid: 3df3aa9f00124f742b70d94a585d705f, type: 3}
-      propertyPath: effectScale
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 8893773986950968270, guid: 3df3aa9f00124f742b70d94a585d705f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.79999995

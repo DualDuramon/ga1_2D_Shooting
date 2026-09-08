@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerStatus))]
 public class PlayerEffect : MonoBehaviour
 {
     [Header("References")]

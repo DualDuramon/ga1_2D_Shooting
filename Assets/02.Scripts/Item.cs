@@ -15,9 +15,12 @@ public abstract class Item : MonoBehaviour
     [Header("Bezier Setting")]
     [SerializeField] private float _moveDuration = 0.5f;
     [SerializeField] private float _curveAmount = 2f;
-
     private Vector2 _startPosition;
     private Vector2 _controlPoint;
+
+    [Header("Particles")]
+    [SerializeField] private GameObject _takeParticle;
+    [SerializeField] private float _effectScale = 1f;
 
 
     private void Start()
@@ -51,7 +54,7 @@ public abstract class Item : MonoBehaviour
         {
             Debug.LogWarning($"{gameObject.name} : Player doesn't have PlayerStatus!");
         }
-
+        SpawnTakeEffect();
         Destroy(gameObject);
     }
 
@@ -135,6 +138,17 @@ public abstract class Item : MonoBehaviour
     //    float oneMinusT = 1f - t;
     //    return oneMinusT * oneMinusT * start + 2f * oneMinusT * t * control + t * t * end;
     //}
+    private void SpawnTakeEffect()
+    {
+        if (_takeParticle == null)
+        {
+            Debug.LogWarning($"{gameObject.name} : can't spawn Effect. _takeParticle is null");
+            return;
+        }
+
+        Transform efftectTf = Instantiate(_takeParticle, transform.position, Quaternion.identity).transform;
+        efftectTf.localScale = new Vector3(_effectScale, _effectScale, _effectScale);
+    }
 
     protected abstract void ApplyEffect(PlayerStatus player);
 }
