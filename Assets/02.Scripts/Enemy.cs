@@ -18,6 +18,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Animator _animator;
     private const string HitTrigger = "HitTrigger";
 
+    [Header("Effect Referrences")]
+    [SerializeField] private GameObject deathFxPrefab;
+
     protected virtual void Awake()
     {
         _generator = GetComponent<EnemyItemGenerator>();
@@ -71,7 +74,13 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         GenerateItemRandomly();
+        SpawnDeathEffect();
         Destroy(gameObject);
+    }
+
+    private void SpawnDeathEffect()
+    {
+        Instantiate(deathFxPrefab, transform.position, Quaternion.identity);
     }
 
     private void GenerateItemRandomly()

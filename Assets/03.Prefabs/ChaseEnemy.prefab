@@ -190,6 +190,7 @@ MonoBehaviour:
     m_Bits: 0
   _generator: {fileID: 0}
   _animator: {fileID: 0}
+  deathFxPrefab: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
   _targetPlayer: {fileID: 0}
 --- !u!114 &5006750177641862040
 MonoBehaviour:

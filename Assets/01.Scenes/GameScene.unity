@@ -841,7 +841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   _health: 100
   _moveSpeed: 5
-  _fireCoolTime: 0.5
+  _fireRate: 0.3
 --- !u!95 &841643931
 Animator:
   serializedVersion: 7
