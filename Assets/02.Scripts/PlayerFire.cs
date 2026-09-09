@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerFire : MonoBehaviour
@@ -18,6 +19,8 @@ public class PlayerFire : MonoBehaviour
 
     private PlayerCommandInvoker _invoker;
     public bool IsReplaying => !_invoker.CanReadInput;
+
+    public event Action OnFire;
 
     private void Awake()
     {
@@ -52,6 +55,7 @@ public class PlayerFire : MonoBehaviour
     {
         FireMainBullet();
         FireSideBullet();
+        OnFire?.Invoke();
         _lastFireTime = Time.time;
     }
 

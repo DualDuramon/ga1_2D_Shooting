@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerEffect
   _status: {fileID: 0}
-  _deathEffect: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
+  _deathEffect: {fileID: 5112403345868107898, guid: 6f34ef0d986e9db4199cf75805f79753, type: 3}
   _tailRenderer: {fileID: 1307621740}
 --- !u!114 &841643933
 MonoBehaviour:
@@ -1155,7 +1155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSound
   _source: {fileID: 0}
   _hitSoundClip: {fileID: 8300000, guid: 1c810074b8478634f918a38c66357006, type: 3}
+  _fireSoundClip: {fileID: 8300000, guid: a571a4d2f5cc0a04182bb6efda3c65ce, type: 3}
   _status: {fileID: 0}
+  _attack: {fileID: 0}
 --- !u!1 &906144996
 GameObject:
   m_ObjectHideFlags: 0
