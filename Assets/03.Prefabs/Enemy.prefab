@@ -115,10 +115,10 @@ MonoBehaviour:
   _damagableLayers:
     serializedVersion: 2
     m_Bits: 0
-  _generator: {fileID: 0}
+  _generator: {fileID: 7880983110176354272}
   _animator: {fileID: 0}
-  deathFxPrefab: {fileID: 2433282508537954060, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
-  effectScale: 0.5
+  _deathFxPrefab: {fileID: 725748389856807714, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
+  _effectScale: 0.5
 --- !u!61 &6252108864133988467
 BoxCollider2D:
   m_ObjectHideFlags: 0

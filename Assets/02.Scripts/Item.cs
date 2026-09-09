@@ -118,7 +118,7 @@ public abstract class Item : MonoBehaviour
         _moveTimer += Time.deltaTime;
 
         float t = Mathf.Clamp01(_moveTimer / _moveDuration); //이동 진행률. moveDuration안에 가게끔 하는 것
-        float easedT = t * t; // 빨려 들어가는 느낌을 위해 후반부로 갈수록 빠르게 이동
+        float easedT = t * t;   // 빨려 들어가는 느낌을 위해 후반부로 갈수록 빠르게 이동
 
 
         Vector2 targetPosition = _targetStatus.transform.position;
