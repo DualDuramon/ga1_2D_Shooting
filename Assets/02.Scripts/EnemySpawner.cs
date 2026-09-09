@@ -14,6 +14,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int[] _enemySpawnProbabilities;
     private int _maxProbablity;
 
+    [Header("Spawn Point")]
+    [SerializeField] private Transform[] _spawnPoint = new Transform[3];
+
     private void Awake()
     {
         CalculateMaxProbablity();
@@ -41,9 +44,16 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
+        if (_spawnPoint == null)
+        {
+            Debug.LogWarning("Can't Spawn Enemy! Check Spawn Point");
+            return;
+        }
+
+        Transform spawnTf = _spawnPoint[(Random.Range(0, _spawnPoint.Length))];
 
         Enemy enemy = Instantiate(DecideSpawnEnemyPrefabs());
-        enemy.transform.position = transform.position;
+        enemy.transform.position = spawnTf.position;
     }
 
     private Enemy DecideSpawnEnemyPrefabs()
