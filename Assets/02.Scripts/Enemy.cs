@@ -81,8 +81,8 @@ public class Enemy : MonoBehaviour
 
     private void SpawnDeathEffect()
     {
-        GameObject effect = Instantiate(deathFxPrefab, transform.position, Quaternion.identity);
-        effect.transform.localScale = new Vector3(effectScale, effectScale, effectScale);
+        GameObject effect = Instantiate(_deathFxPrefab, transform.position, Quaternion.identity);
+        effect.transform.localScale = new Vector3(_effectScale, _effectScale, _effectScale);
     }
 
     private void GenerateItemRandomly()
