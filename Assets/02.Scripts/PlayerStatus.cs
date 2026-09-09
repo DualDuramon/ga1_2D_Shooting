@@ -6,7 +6,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] private float _health = 100f;
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField] private float _fireRate = 0.3f;
-    private const float _fireMinCoolTime = 0.1f;
+    private const float FireMinCoolTime = 0.1f;
 
 
     //캡슐화 : 데이터 은닉(health를 private 처리) + 행위를 통한 상태 변경(TakeDamage()와 Heal())
@@ -47,7 +47,7 @@ public class PlayerStatus : MonoBehaviour
     public void AdjustFireDuration(float addedDuration)
     {
         _fireRate += addedDuration;
-        _fireRate = (_fireMinCoolTime <= _fireRate) ? _fireRate : _fireMinCoolTime;
+        _fireRate = (FireMinCoolTime <= _fireRate) ? _fireRate : FireMinCoolTime;
     }
 
     private void Die()

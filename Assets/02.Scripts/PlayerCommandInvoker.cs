@@ -10,7 +10,7 @@ public class PlayerCommandInvoker : MonoBehaviour
 
     public bool CanReadInput { get; private set; } = true;
 
-    private Vector2 prevMoveVector = Vector2.zero;
+    private Vector2 _prevMoveVector = Vector2.zero;
 
     private void Awake()
     {
@@ -44,15 +44,15 @@ public class PlayerCommandInvoker : MonoBehaviour
 
         Vector2 dir = new Vector2(h, v);
 
-        if (dir != prevMoveVector)
+        if (dir != _prevMoveVector)
         {
             Debug.Log("입력 삽입..");
-            _replay.AddMoveCommand(new PlayerMoveCommand(_cachedMove, prevMoveVector, Time.time - _startInputTime));
+            _replay.AddMoveCommand(new PlayerMoveCommand(_cachedMove, _prevMoveVector, Time.time - _startInputTime));
 
             _startInputTime = Time.time;
         }
 
-        prevMoveVector = dir;
+        _prevMoveVector = dir;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -71,6 +71,6 @@ public class PlayerCommandInvoker : MonoBehaviour
         CanReadInput = true;
 
         _startInputTime = Time.time;
-        prevMoveVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        _prevMoveVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 }

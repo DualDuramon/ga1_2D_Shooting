@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class DestroyZone : MonoBehaviour
 {
-    private Collider2D[] zoneColliders;
+    private Collider2D[] _zoneColliders;
 
     private void Awake()
     {
-        zoneColliders = transform.GetComponentsInChildren<Collider2D>();
-        foreach (Collider2D col in zoneColliders)
+        _zoneColliders = transform.GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D col in _zoneColliders)
         {
 
         }

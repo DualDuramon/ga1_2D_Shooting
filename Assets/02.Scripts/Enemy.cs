@@ -19,8 +19,8 @@ public class Enemy : MonoBehaviour
     private const string HitTrigger = "HitTrigger";
 
     [Header("Effect Referrences")]
-    [SerializeField] private GameObject deathFxPrefab;
-    [SerializeField] private float effectScale = 1f;
+    [SerializeField] private GameObject _deathFxPrefab;
+    [SerializeField] private float _effectScale = 1f;
 
     protected virtual void Awake()
     {
