@@ -138,6 +138,7 @@ public abstract class Item : MonoBehaviour
     //    float oneMinusT = 1f - t;
     //    return oneMinusT * oneMinusT * start + 2f * oneMinusT * t * control + t * t * end;
     //}
+
     private void SpawnTakeEffect()
     {
         if (_takeParticle == null)
