@@ -21,6 +21,7 @@ public class PlayerStatus : MonoBehaviour
     //    }
     //}
     public Action OnDeath;
+    public Action OnHit;
 
     public void TakeDamage(float damageAmount)
     {
@@ -30,6 +31,10 @@ public class PlayerStatus : MonoBehaviour
         if (_health < 0f)
         {
             Die();
+        }
+        else
+        {
+            OnHit?.Invoke();
         }
     }
 
