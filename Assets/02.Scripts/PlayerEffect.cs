@@ -8,6 +8,7 @@ public class PlayerEffect : MonoBehaviour
 
     [Header("Particle References")]
     [SerializeField] private GameObject _deathEffect;
+    [SerializeField] private TrailRenderer _tailRenderer;
 
     private void Awake()
     {
@@ -36,5 +37,13 @@ public class PlayerEffect : MonoBehaviour
             return;
         }
         Instantiate(_deathEffect, transform.position, Quaternion.identity);
+    }
+
+    public void SetTrailEffect(bool isActive)
+    {
+        if (_tailRenderer.emitting != isActive)
+        {
+            _tailRenderer.emitting = isActive;
+        }
     }
 }

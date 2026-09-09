@@ -4,10 +4,12 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
+    [SerializeField] private PlayerEffect _effect;
+    [SerializeField] private PlayerStatus _status;
+
     private const string Dir_X = "dirX";
 
     private PlayerCommandInvoker _invoker;
-    private PlayerStatus _status;
 
     private Vector2 _boundSize = Vector2.zero;
 
@@ -26,6 +28,7 @@ public class PlayerMove : MonoBehaviour
         _invoker = GetComponent<PlayerCommandInvoker>();
         _status = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
+        _effect = GetComponent<PlayerEffect>();
     }
 
     // 매 프레임마다 호출되는 함수
@@ -80,8 +83,9 @@ public class PlayerMove : MonoBehaviour
 
     public void ExecutePlayerMove(Vector2 direction)
     {
-        Vector2 normalizedSpeed = direction.normalized;
-        transform.Translate(normalizedSpeed * _status.MoveSpeed * Time.deltaTime);
+        Vector2 normalizedDirection = direction.normalized;
+        transform.Translate(normalizedDirection * _status.MoveSpeed * Time.deltaTime);
+        _effect.SetTrailEffect(Vector2.Dot(normalizedDirection, transform.up) > 0);
         LimitPlayerTransform();
     }
 
