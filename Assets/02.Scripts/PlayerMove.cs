@@ -62,20 +62,20 @@ public class PlayerMove : MonoBehaviour
 
         if (transform.position.x > ceilLimit.x)
         {
-            newPosition.x = bottomLimit.x;
+            newPosition.x = ceilLimit.x;
         }
         else if (transform.position.x < bottomLimit.x)
         {
-            newPosition.x = ceilLimit.x;
+            newPosition.x = bottomLimit.x;
         }
 
         if (transform.position.y > ceilLimit.y)
         {
-            newPosition.y = bottomLimit.y;
+            newPosition.y = ceilLimit.y;
         }
         else if (transform.position.y < bottomLimit.y)
         {
-            newPosition.y = ceilLimit.y;
+            newPosition.y = bottomLimit.y;
         }
 
         transform.position = newPosition;
