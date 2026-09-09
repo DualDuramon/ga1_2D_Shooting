@@ -18,14 +18,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Animator _animator;
     private const string HitTrigger = "HitTrigger";
 
-    [Header("Effect Referrences")]
+    [Header("Effect References")]
     [SerializeField] private GameObject _deathFxPrefab;
     [SerializeField] private float _effectScale = 1f;
+
+    [Header("Audio References")]
+    [SerializeField] private AudioSource _damagedSoundSource;
 
     protected virtual void Awake()
     {
         _generator = GetComponent<EnemyItemGenerator>();
         _animator = GetComponent<Animator>();
+        _damagedSoundSource = GetComponent<AudioSource>();
         _damagableLayers = LayerMask.GetMask("Player");
     }
 
@@ -59,17 +63,31 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
-        TriggerHitAnimation();
+        else
+        {
+            TriggerHitAnimation();
+            PlayHitSound();
+        }
     }
 
     private void TriggerHitAnimation()
     {
         if (_animator == null)
         {
-            Debug.Log($"{gameObject.name} : don't have animator component!");
+            Debug.LogWarning($"{gameObject.name} : don't have animator component!");
             return;
         }
         _animator.SetTrigger(HitTrigger);
+    }
+
+    private void PlayHitSound()
+    {
+        if (_damagedSoundSource == null || _damagedSoundSource.clip == null)
+        {
+            Debug.LogWarning($"{gameObject.name} : Can't Play Hit Sound. Check AudioClip Componenet !");
+            return;
+        }
+        _damagedSoundSource.Play();
     }
 
     private void Die()
