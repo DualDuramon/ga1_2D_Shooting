@@ -5,7 +5,9 @@ public class EnemySpawner : MonoBehaviour
     //필요 속성
     // - 타이머
     [Header("Spawn Duration")]
-    [SerializeField] private float _spawnInterval = 3f;
+    [SerializeField] private float _maxSpawnInterval = 2f;
+    [SerializeField] private float _minSpawnInterval = 1f;
+    private float _spawnInterval = 3f;
     private float _timer = 0f;
 
     // - 생성할 프리펩
@@ -38,7 +40,7 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnEnemy();
             _timer = 0f;
-            _spawnInterval = Random.Range(1f, 3f);
+            _spawnInterval = Random.Range(_minSpawnInterval, _maxSpawnInterval);
         }
     }
 

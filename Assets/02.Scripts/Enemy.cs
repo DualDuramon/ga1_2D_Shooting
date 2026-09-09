@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(_moveDirection * _speed * Time.deltaTime);
+        transform.position += (Vector3)_moveDirection.normalized * _speed * Time.deltaTime;
     }
 
     public void TakeDamage(float damageAmount)
