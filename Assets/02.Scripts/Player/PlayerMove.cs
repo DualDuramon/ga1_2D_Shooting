@@ -38,7 +38,6 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         if (!CanReadInput) return;
-
         Move();
     }
 

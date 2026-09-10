@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerAutoMove : MonoBehaviour
 {
     [SerializeField] private bool _isAutoMove = false;
-    [SerializeField] private float _deadZoneX = 0.1f;
+    [SerializeField] private float _ignoreTrackingY = 2f;
     private Vector2 _defaultPos;
 
 
@@ -42,6 +42,8 @@ public class PlayerAutoMove : MonoBehaviour
 
         foreach (GameObject enemy in enemyList)
         {
+            if (enemy.transform.position.y < _ignoreTrackingY) continue;
+
             float dist = Vector2.SqrMagnitude(enemy.transform.position - transform.position);
             if (dist < minDist * minDist)
             {
@@ -59,20 +61,25 @@ public class PlayerAutoMove : MonoBehaviour
             SetNextEnemy();
         }
 
-        Vector2 dir = _defaultPos - (Vector2)transform.position;
+
+        Vector2 diff = (_defaultPos - (Vector2)transform.position);
+        Vector2 dir = diff;
+
         if (_targetEnemy != null)
         {
-            dir = _targetEnemy.position - transform.position;
-
-            if (Mathf.Abs(dir.x) < _deadZoneX)
+            dir = (_targetEnemy.position - transform.position);
+            if (diff.y >= 3)
             {
-                dir.x = 0f;
+                dir.y = 1f;
+
             }
-            dir.y = 0f;
+            else
+            {
+                diff.y = -1f;
+
+            }
         }
 
-        dir = dir == Vector2.zero ? Vector2.zero : dir.normalized;
-
-        return dir;
+        return dir.normalized;
     }
 }
