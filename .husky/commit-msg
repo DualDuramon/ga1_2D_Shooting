@@ -1,24 +1,25 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-## husky task runner examples -------------------
-## Note : for local installation use 'dotnet' prefix. e.g. 'dotnet husky'
+COMMIT_MSG_FILE="$1"
 
-## run all tasks
-#husky run
+# 첫 줄 가져오기
+FIRST_LINE=$(head -n 1 "$COMMIT_MSG_FILE")
 
-### run all tasks with group: 'group-name'
-#husky run --group group-name
+# 1. Conventional Commit 형식 검사
+echo "$FIRST_LINE" | grep -qE '^(asset|design|build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.+\))?!?: .+'
 
-## run task with name: 'task-name'
-#husky run --name task-name
+if [ $? -ne 0 ]; then
+    echo "커밋 메시지는 'type: 설명' 형식이어야 합니다."
+    exit 1
+fi
 
-## pass hook arguments to task
-#husky run --args "$1" "$2"
+# 2. 첫 줄을 제외한 description의 비어있지 않은 줄 개수 확인
+DESCRIPTION_LINES=$(tail -n +2 "$COMMIT_MSG_FILE" | grep -v '^[[:space:]]*$' | wc -l)
 
-## or put your custom commands -------------------
-#echo 'Husky.Net is awesome!'
+if [ "$DESCRIPTION_LINES" -lt 2 ]; then
+    echo "커밋 메시지 description은 최소 2줄 이상 작성해야 합니다."
+    exit 1
+fi
 
-grep -qE '^(asset|design|build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\(.+\))?!?: .+' "$1" && exit 0
-echo "커밋 메시지는 'type: 설명' 형식이어야 합니다."
-exit 1
+exit 0
