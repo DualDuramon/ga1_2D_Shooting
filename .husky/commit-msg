@@ -15,9 +15,9 @@ if [ $? -ne 0 ]; then
 fi
 
 # 2. 첫 줄을 제외한 description의 비어있지 않은 줄 개수 확인
-DESCRIPTION_LINES=$(tail -n +1 "$COMMIT_MSG_FILE" | grep -v '^[[:space:]]*$' | wc -l)
+DESCRIPTION_LINES=$(tail -n +2 "$COMMIT_MSG_FILE" | grep -v '^[[:space:]]*$' | wc -l)
 
-if [ "$DESCRIPTION_LINES" -lt 2 ]; then
+if [ "$DESCRIPTION_LINES" -lt 1 ]; then
     echo "커밋 메시지 description은 최소 1줄 이상 작성해야 합니다."
     exit 1
 fi
