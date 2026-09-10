@@ -15,6 +15,9 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _bestScoreText;
     [SerializeField] private TextMeshProUGUI _currentScoreText;
 
+    //저장 키
+    private const string Best_Score_Save_Key = "BestScore";
+
     private void Awake()
     {
         if (_instance != null)
@@ -28,6 +31,12 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey(Best_Score_Save_Key))
+        {
+            _bestScore = PlayerPrefs.GetInt(Best_Score_Save_Key);
+        }
+        _bestScore = PlayerPrefs.GetInt(Best_Score_Save_Key, 0);
+
         RefreshTextPerText();
     }
 
@@ -46,8 +55,15 @@ public class ScoreManager : MonoBehaviour
         if (_currentScore > _bestScore)
         {
             _bestScore = _currentScore;
+            SaveBestScoreData();
         }
 
         RefreshTextPerText();
+    }
+
+    private void SaveBestScoreData()
+    {
+        PlayerPrefs.SetInt(Best_Score_Save_Key, _bestScore);
+        PlayerPrefs.Save();
     }
 }
