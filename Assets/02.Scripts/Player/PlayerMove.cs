@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private PlayerEffect _effect;
     [SerializeField] private PlayerStatus _status;
+    [SerializeField] private PlayerAutoMove _autoMove;
 
     private const string Dir_X = "dirX";
 
@@ -29,6 +30,7 @@ public class PlayerMove : MonoBehaviour
         _status = GetComponent<PlayerStatus>();
         _animator = GetComponent<Animator>();
         _effect = GetComponent<PlayerEffect>();
+        _autoMove = GetComponent<PlayerAutoMove>();
     }
 
     // 매 프레임마다 호출되는 함수
@@ -42,11 +44,20 @@ public class PlayerMove : MonoBehaviour
 
     private void Move()
     {
-        // 입력 처리 방식2
-        float h = Input.GetAxisRaw("Horizontal"); // 키보드 입력 상태에 따라 -1f ~ 0 ~ 1f를 반환
-        float v = Input.GetAxisRaw("Vertical");
+        Vector2 dir = Vector2.zero;
 
-        Vector2 dir = new Vector2(h, v);
+        if (_autoMove.IsAutoMove)
+        {
+            dir = _autoMove.GetMoveDirection();
+        }
+        else
+        {
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
+
+            dir = new Vector2(h, v);
+        }
+
         ExecutePlayerMove(dir);
         _animator.SetInteger(Dir_X, (int)dir.x);
     }
