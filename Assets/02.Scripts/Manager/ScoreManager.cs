@@ -35,7 +35,10 @@ public class ScoreManager : MonoBehaviour
         {
             _bestScore = PlayerPrefs.GetInt(Best_Score_Save_Key);
         }
-        _bestScore = PlayerPrefs.GetInt(Best_Score_Save_Key, 0);
+        else
+        {
+            _bestScore = PlayerPrefs.GetInt(Best_Score_Save_Key, 0);
+        }
 
         RefreshTextPerText();
     }
