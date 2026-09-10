@@ -95,8 +95,7 @@ public class Enemy : MonoBehaviour
         GenerateItemRandomly();
         SpawnDeathEffect();
 
-        ScoreManager manager = FindAnyObjectByType<ScoreManager>();
-        manager?.AddScore(100);
+        ScoreManager.Instance.AddScore(100); //점수 매니저 싱글톤
 
         Destroy(gameObject);
     }
