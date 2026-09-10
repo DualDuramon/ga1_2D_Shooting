@@ -55,6 +55,7 @@ public class PlayerFire : MonoBehaviour
     {
         FireMainBullet();
         FireSideBullet();
+
         OnFire?.Invoke();
         _lastFireTime = Time.time;
     }
