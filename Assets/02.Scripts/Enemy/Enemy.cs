@@ -94,6 +94,10 @@ public class Enemy : MonoBehaviour
     {
         GenerateItemRandomly();
         SpawnDeathEffect();
+
+        ScoreManager manager = FindAnyObjectByType<ScoreManager>();
+        manager?.AddScore(100);
+
         Destroy(gameObject);
     }
 

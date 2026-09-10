@@ -16,14 +16,22 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        UpdateScoreText();
+        RefreshTextPerTick();
     }
 
-    private void UpdateScoreText()
+    private void RefreshTextPerTick()
     {
         _bestScoreText.text = $"BestScore : {_bestScore}";
         _currentScoreText.text = $"Score : {_currentScore}";
     }
 
+    public void AddScore(int score)
+    {
+        _currentScore += score;
+        if (_currentScore > _bestScore)
+        {
+            _bestScore = _currentScore;
+        }
+    }
 
 }
