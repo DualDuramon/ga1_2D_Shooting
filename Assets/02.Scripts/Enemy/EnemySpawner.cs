@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     // - 생성할 프리펩
     [Header("Spawned Enemy Prefab")]
-    [SerializeField] private EnemySpawnData[] _spawnDatas;
+    [SerializeField] private EnemySpawnDataTableSO _spawnDataTable;
 
     private int _maxWeight;
 
@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void CalculateMaxProbablity()
     {
-        foreach (EnemySpawnData data in _spawnDatas)
+        foreach (EnemySpawnData data in _spawnDataTable.Datas)
         {
             _maxWeight += data.Weight;
         }
@@ -84,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
         int randomWeight = Random.Range(0, _maxWeight);
         int accomulateWeight = 0;
 
-        foreach (EnemySpawnData data in _spawnDatas)
+        foreach (EnemySpawnData data in _spawnDataTable.Datas)
         {
             accomulateWeight += data.Weight;
 
