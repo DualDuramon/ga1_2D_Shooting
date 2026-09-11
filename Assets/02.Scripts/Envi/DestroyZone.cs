@@ -4,16 +4,16 @@ public class DestroyZone : MonoBehaviour
 {
     private Collider2D[] _zoneColliders;
 
-    private void Awake()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        _zoneColliders = transform.GetComponentsInChildren<Collider2D>();
-        foreach (Collider2D col in _zoneColliders)
+        //Destroy(collision.gameObject);
+        if (other.gameObject.CompareTag("Bullet"))
         {
-
+            other.gameObject.SetActive(false);
         }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Destroy(collision.gameObject);
+        else
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

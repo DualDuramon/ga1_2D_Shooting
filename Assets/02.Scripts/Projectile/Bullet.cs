@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private AudioSource _audioSource;
+
     public Vector2 Direction = Vector2.up;
     public float MoveSpeed = 0f;
     public float LifeTime = 1f;
@@ -11,14 +13,15 @@ public class Bullet : MonoBehaviour
 
     private void Awake()
     {
-        _generatedTime = Time.time;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
     {
         if (Time.time - _generatedTime >= LifeTime)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
             return;
         }
         transform.Translate(Direction * MoveSpeed * Time.deltaTime);
@@ -42,8 +45,20 @@ public class Bullet : MonoBehaviour
                 enemy.TakeDamage(Damage);
             }
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
+    public void OnSpawn()
+    {
+        //프리펩이 활성화 될 때마다 pool에 의해서 초기화 하는 코드들이 들어간다
+        _generatedTime = Time.time;
+        PlaySound();
+    }
+
+    private void PlaySound()
+    {
+        _audioSource.Play();
+    }
 }
