@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] public BulletType Type;
 
     public Vector2 Direction = Vector2.up;
     public float MoveSpeed = 0f;

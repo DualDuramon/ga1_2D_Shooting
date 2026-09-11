@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class DestroyZone : MonoBehaviour
 {
-    private Collider2D[] _zoneColliders;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Destroy(collision.gameObject);

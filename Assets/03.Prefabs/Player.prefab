@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 8230004891863884863}
   - component: {fileID: 3056816175798828415}
   - component: {fileID: 8832908502432051146}
+  - component: {fileID: 2598396086097143710}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -343,7 +344,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -604972624, guid: 6520dda4a70dfbf40a55b7af39ecda4e, type: 3}
+  m_Sprite: {fileID: -6729285647913829110, guid: 6e1d47ee587922f46a02ac5268135992, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -390,8 +391,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.46255976, y: 0.50000006}
+    oldSize: {x: 1.1083332, y: 1.5174357}
     newSize: {x: 0.24, y: 0.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -564,6 +565,7 @@ MonoBehaviour:
   _animator: {fileID: 0}
   _effect: {fileID: 0}
   _status: {fileID: 0}
+  _autoMove: {fileID: 0}
 --- !u!114 &3935533540729084304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,8 +579,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerFire
   _status: {fileID: 0}
-  BulletPrefab: {fileID: 3683567064484451826, guid: 74b502311ea4fb1449edc09ffd67019e, type: 3}
-  SideBulletPrefab: {fileID: 1668211343687529689, guid: 31fd1a3f360b592408b4b7daf91ef1ce, type: 3}
   MuzzleLocation:
   - {fileID: 2466909830797890009}
   - {fileID: 6990517454247306550}
@@ -670,9 +670,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSound
   _source: {fileID: 0}
   _hitSoundClip: {fileID: 8300000, guid: 1c810074b8478634f918a38c66357006, type: 3}
-  _fireSoundClip: {fileID: 8300000, guid: a571a4d2f5cc0a04182bb6efda3c65ce, type: 3}
   _status: {fileID: 0}
-  _attack: {fileID: 0}
+--- !u!114 &2598396086097143710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5013165336018101480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44be254533550664bab70380f50b7c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAutoMove
+  _isAutoMove: 0
+  _ignoreTrackingY: 2
 --- !u!1 &7722747947633233961
 GameObject:
   m_ObjectHideFlags: 0

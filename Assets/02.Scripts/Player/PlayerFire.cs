@@ -4,13 +4,8 @@ using UnityEngine;
 public class PlayerFire : MonoBehaviour
 {
     [SerializeField] private PlayerStatus _status;
-    // 역할 : 스페이스바를 누를때마다 총알을 생성해서 발사하고 싶다.
-    // 필요 속성
-    // - 총알프리팹
-    public Bullet BulletPrefab;
-    public Bullet SideBulletPrefab;
 
-    // - 생성위치(총구)
+
     public Transform[] MuzzleLocation;
     public Transform[] SideMuzzleLocation;
 
@@ -63,20 +58,20 @@ public class PlayerFire : MonoBehaviour
     private void FireMainBullet()
     {
         //SpawnMainBullet(MuzzleLocation);
-        SpawnBullet(BulletPrefab, MuzzleLocation);
+        SpawnBullet(BulletType.Main, MuzzleLocation);
     }
 
     private void FireSideBullet()
     {
         //SpawnSideBullet(SideMuzzleLocation);
-        SpawnBullet(SideBulletPrefab, SideMuzzleLocation);
+        SpawnBullet(BulletType.Sub, SideMuzzleLocation);
     }
 
-    private void SpawnBullet(Bullet neededBullet, Transform[] locations)
+    private void SpawnBullet(BulletType neededBulletType, Transform[] locations)
     {
         foreach (Transform muzzleTf in locations)
         {
-            Bullet bullet = BulletPool.Instance.GetBullet(neededBullet);
+            Bullet bullet = BulletPool.Instance.GetBullet(neededBulletType);
             bullet.transform.position = muzzleTf.position;
         }
     }

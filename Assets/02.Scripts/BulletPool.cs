@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 //오브젝트 풀링이란 : 오브젝트 Pool(웅덩이, 창고)를 만들어두고
@@ -6,18 +5,11 @@ using UnityEngine;
 //메모리 할당과 객체 생성파괴를 최소화 해서 성능UP 시킨다.
 public class BulletPool : MonoBehaviour
 {
-    [Header("Bullet Prefab")]
-    [SerializeField] private Bullet _mainBulletPrefab;
-    [SerializeField] private Bullet _sideBulletPrefab;
+    [Header("Bullet Pool Settings")]
+    [SerializeField] private Bullet[] _bulletPrefabs;
+    [SerializeField] private int _poolSize = 50;
 
-    [Header("Pool Size")]
-    [SerializeField] private int _mainBulletPoolSize = 50;
-    [SerializeField] private int _sideBulletPoolSize = 50;
-
-    private Bullet[] _mainBulletPool; //생성한 총알을 담아둘 Pool
-    private Bullet[] _sideBulletPool; //생성한 사이드 총알을 담아둘 Pool
-
-    private Dictionary<Bullet, Bullet[]> _poolDictionary = new Dictionary<Bullet, Bullet[]>(); //풀 선택용 딕셔너리
+    private Bullet[,] _pools; //풀 선택용 2차원 배열
 
     #region 싱글톤
     private static BulletPool _instance;
@@ -38,71 +30,39 @@ public class BulletPool : MonoBehaviour
 
     private void GenerateBulletInstances()
     {
-        _mainBulletPool = new Bullet[_mainBulletPoolSize];
+        _pools = new Bullet[_bulletPrefabs.GetLength(0), _poolSize];
 
-        for (int i = 0; i < _mainBulletPoolSize; i++)
+        for (int i = 0; i < _bulletPrefabs.GetLength(0); i++)
         {
-            Bullet bullet = Instantiate(_mainBulletPrefab, gameObject.transform);
-            bullet.gameObject.SetActive(false); //사용할 것 아니기에 비활성화
-
-            _mainBulletPool[i] = bullet;  //pool 에 삽입
-        }
-
-        _sideBulletPool = new Bullet[_sideBulletPoolSize];
-
-        for (int i = 0; i < _sideBulletPoolSize; i++)
-        {
-            Bullet bullet = Instantiate(_sideBulletPrefab, gameObject.transform);
-            bullet.gameObject.SetActive(false);
-
-            _sideBulletPool[i] = bullet;
-        }
-
-        _poolDictionary.Add(_mainBulletPrefab, _mainBulletPool);
-        _poolDictionary.Add(_sideBulletPrefab, _sideBulletPool);
-    }
-
-    public Bullet GetBullet(Bullet neededBullet)
-    {
-        Bullet[] pool = _poolDictionary[neededBullet];
-
-        foreach (Bullet bullet in pool)
-        {
-            if (!bullet.gameObject.activeInHierarchy)
+            for (int j = 0; j < _poolSize; j++)
             {
-                bullet.gameObject.SetActive(true);
-                bullet.OnSpawn();
-                return bullet;
+                Bullet bullet = Instantiate(_bulletPrefabs[i], gameObject.transform);
+                bullet.gameObject.SetActive(false); //사용할 것 아니기에 비활성화
+
+                _pools[i, j] = bullet;
             }
         }
-
-        return null;
     }
 
-    public Bullet GetMainBullet()
+    public Bullet GetBullet(BulletType neededBulletType)
     {
-        foreach (Bullet bullet in _mainBulletPool)
+        for (int i = 0; i < _pools.GetLength(0); i++)
         {
-            if (!bullet.gameObject.activeInHierarchy)
+            if (_pools[i, 0].Type != neededBulletType)
             {
-                bullet.gameObject.SetActive(true);
-                bullet.OnSpawn();
-                return bullet;
+                continue;
             }
-        }
 
-        return null;
-    }
-
-    public Bullet GetSideBullet()
-    {
-        foreach (Bullet bullet in _sideBulletPool)
-        {
-            if (!bullet.gameObject.activeInHierarchy)
+            for (int j = 0; j < _poolSize; j++)
             {
-                bullet.gameObject.SetActive(true);
-                bullet.OnSpawn();
-                return bullet;
+                Bullet bullet = _pools[i, j];
+
+                if (bullet.gameObject.activeSelf == false)
+                {
+                    bullet.gameObject.SetActive(true);
+                    bullet.OnSpawn();
+                    return bullet;
+                }
             }
         }
 
