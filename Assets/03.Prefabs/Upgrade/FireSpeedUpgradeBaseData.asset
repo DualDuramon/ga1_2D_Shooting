@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63525c39e87ffa046a70f28e41fc5b4c, type: 3}
+  m_Name: FireSpeedUpgradeBaseData
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeBaseDataSO
+  _name: FSP
+  _defaultValue: 0.005
+  _increaseValue: 0.005
+  _defaultCost: 1000
+  _increaseCost: 1.2

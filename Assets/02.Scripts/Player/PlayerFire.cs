@@ -59,13 +59,11 @@ public class PlayerFire : MonoBehaviour
 
     private void FireMainBullet()
     {
-        //SpawnMainBullet(MuzzleLocation);
         SpawnBullet(BulletType.Main, MuzzleLocation);
     }
 
     private void FireSideBullet()
     {
-        //SpawnSideBullet(SideMuzzleLocation);
         SpawnBullet(BulletType.Sub, SideMuzzleLocation);
     }
 

@@ -23,7 +23,7 @@ public class UI_Upgrade : MonoBehaviour
         Upgrade upgrade = UpgradeManager.Instance.Upgrades[_index];
 
         _titleText.text = $"{upgrade.Name} Lv.{upgrade.Level}";
-        _valueText.text = $"{upgrade.CurrentValue} -> {upgrade.NextValue}";
+        _valueText.text = $"{upgrade.CurrentValue} → {upgrade.NextValue}";
         _scoreCostText.text = $"{upgrade.Cost:N0}";
     }
 }

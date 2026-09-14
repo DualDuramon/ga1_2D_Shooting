@@ -2750,21 +2750,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
   _upgrades:
-  - _name: ATK
-    _defaultValue: 1
-    _increaseValue: 1
-    _defaultCost: 100
-    _increaseCost: 1.1
-  - _name: FSP
-    _defaultValue: 0.1
-    _increaseValue: 0.1
-    _defaultCost: 1000
-    _increaseCost: 1.2
-  - _name: MSP
-    _defaultValue: 0.1
-    _increaseValue: 0.1
-    _defaultCost: 1000
-    _increaseCost: 1.2
+  - _baseData: {fileID: 11400000, guid: 2921a65c37baa0d4087da115ac21b87b, type: 2}
+  - _baseData: {fileID: 11400000, guid: d7c098aee89a5ab43826ab719ddd293a, type: 2}
+  - _baseData: {fileID: 11400000, guid: 0a20033d01fa78643a50c8385eb4edfe, type: 2}
   _upgradeUIs:
   - {fileID: 739901396}
   - {fileID: 1743390496}
