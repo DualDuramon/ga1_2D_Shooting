@@ -822,6 +822,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d984a133e51b22449bd58fa677453b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_AutoButton
+  _onSprite: {fileID: 1206005349077091292, guid: afdfe854a4e9d1243b7bd95eb85b5953, type: 3}
+  _offSprite: {fileID: 2475711161320758719, guid: c4902690b208d904aaec8c4ece2e3bdc, type: 3}
 --- !u!1 &767125211
 GameObject:
   m_ObjectHideFlags: 0

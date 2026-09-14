@@ -6,7 +6,6 @@ public class PlayerAutoMove : MonoBehaviour
     [SerializeField] private float _ignoreTrackingY = 2f;
     private Vector2 _defaultPos;
 
-
     public bool IsAutoPlay => _isAutoPlay;
 
     private Transform _targetEnemy;
