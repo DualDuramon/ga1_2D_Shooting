@@ -15,13 +15,14 @@ public class UI_Upgrade : MonoBehaviour
     {
         //버튼이 클릭되면 매니저에게 업그레이드 해줘라고 요청한다.
         UpgradeManager.Instance.LevelUp(_index);
+        Refresh();
     }
 
     public void Refresh()
     {
         Upgrade upgrade = UpgradeManager.Instance.Upgrades[_index];
 
-        _titleText.text = $"{upgrade.Name}";
+        _titleText.text = $"{upgrade.Name} Lv.{upgrade.Level}";
         _valueText.text = $"{upgrade.CurrentValue} -> {upgrade.NextValue}";
         _scoreCostText.text = $"{upgrade.Cost:N0}";
     }

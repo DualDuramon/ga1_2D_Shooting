@@ -45,7 +45,7 @@ public class PlayerFire : MonoBehaviour
 
     private bool CanFire()
     {
-        return Time.time - _lastFireTime > _status.FireRate;
+        return Time.time - _lastFireTime > _status.FireRate - UpgradeManager.Instance.Upgrades[1].CurrentValue;
     }
 
     public void ExecuteFire()

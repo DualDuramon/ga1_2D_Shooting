@@ -94,7 +94,8 @@ public class PlayerMove : MonoBehaviour
     public void ExecutePlayerMove(Vector2 direction)
     {
         Vector2 normalizedDirection = direction.normalized;
-        transform.Translate(normalizedDirection * _status.MoveSpeed * Time.deltaTime);
+        transform.Translate(normalizedDirection * (_status.MoveSpeed + UpgradeManager.Instance.Upgrades[1].CurrentValue) * Time.deltaTime);
+
         _effect.SetTrailEffect(Vector2.Dot(normalizedDirection, transform.up) > 0);
         LimitPlayerTransform();
     }

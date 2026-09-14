@@ -43,7 +43,8 @@ public class Bullet : MonoBehaviour
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(Damage);
+                float finalDamage = Damage + UpgradeManager.Instance.Upgrades[0].CurrentValue;
+                enemy.TakeDamage(finalDamage);
             }
 
             //Destroy(gameObject);

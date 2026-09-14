@@ -17,10 +17,12 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-
+    //업그레이드 도메인 클래스
     [SerializeField] private Upgrade[] _upgrades;
-
     public Upgrade[] Upgrades => _upgrades;
+
+    //업그레이드 UI
+    [SerializeField] private UI_Upgrade[] _upgradeUIs;
 
 
     private void Awake()
@@ -35,10 +37,22 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        RefreshUI();
+    }
 
     public void LevelUp(int index)
     {
         _upgrades[index].LevelUp();
+        RefreshUI();
     }
 
+    private void RefreshUI()
+    {
+        foreach (UI_Upgrade ui in _upgradeUIs)
+        {
+            ui.Refresh();
+        }
+    }
 }
