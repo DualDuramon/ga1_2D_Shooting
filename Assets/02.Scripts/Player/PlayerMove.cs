@@ -45,7 +45,7 @@ public class PlayerMove : MonoBehaviour
     {
         Vector2 dir = Vector2.zero;
 
-        if (_autoMove.IsAutoMove)
+        if (_autoMove.IsAutoPlay)
         {
             dir = _autoMove.GetMoveDirection();
         }

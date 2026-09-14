@@ -4,13 +4,14 @@ using UnityEngine;
 public class PlayerFire : MonoBehaviour
 {
     [SerializeField] private PlayerStatus _status;
+    [SerializeField] private PlayerAutoMove _autoMove;
 
 
     public Transform[] MuzzleLocation;
     public Transform[] SideMuzzleLocation;
 
     private float _lastFireTime = 0f;
-    public bool AutomaticFire = false;
+    private bool _automaticFire = false;
 
     private PlayerCommandInvoker _invoker;
     public bool IsReplaying => !_invoker.CanReadInput;
@@ -21,6 +22,7 @@ public class PlayerFire : MonoBehaviour
     {
         _status = GetComponent<PlayerStatus>();
         _invoker = GetComponent<PlayerCommandInvoker>();
+        _autoMove = GetComponent<PlayerAutoMove>();
     }
 
     private void Update()
@@ -29,12 +31,12 @@ public class PlayerFire : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ToggleFireMode();
+            SetFireMode(!_automaticFire);
         }
 
         if (CanFire())
         {
-            if (AutomaticFire || Input.GetKeyDown(KeyCode.Space))
+            if (_autoMove.IsAutoPlay || _automaticFire || Input.GetKeyDown(KeyCode.Space))
             {
                 ExecuteFire();
             }
@@ -76,8 +78,8 @@ public class PlayerFire : MonoBehaviour
         }
     }
 
-    private void ToggleFireMode()
+    public void SetFireMode(bool auto)
     {
-        AutomaticFire = !AutomaticFire;
+        _automaticFire = auto;
     }
 }

@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PlayerAutoMove : MonoBehaviour
 {
-    [SerializeField] private bool _isAutoMove = false;
+    [SerializeField] private bool _isAutoPlay = false;
     [SerializeField] private float _ignoreTrackingY = 2f;
     private Vector2 _defaultPos;
 
 
-    public bool IsAutoMove => _isAutoMove;
+    public bool IsAutoPlay => _isAutoPlay;
 
     private Transform _targetEnemy;
 
@@ -20,19 +20,19 @@ public class PlayerAutoMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ToggleAutoMove();
+            SetAutoMove(!_isAutoPlay);
         }
 
-        if (_isAutoMove && _targetEnemy == null)
+        if (_isAutoPlay && _targetEnemy == null)
         {
             SetNextEnemy();
         }
     }
 
 
-    private void ToggleAutoMove()
+    public void SetAutoMove(bool auto)
     {
-        _isAutoMove = !_isAutoMove;
+        _isAutoPlay = auto;
     }
 
     private void SetNextEnemy() //TODO : 오브젝트 풀링이용
