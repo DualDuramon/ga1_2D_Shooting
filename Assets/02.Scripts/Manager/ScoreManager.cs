@@ -45,8 +45,8 @@ public class ScoreManager : MonoBehaviour
 
     private void RefreshTextPerText()
     {
-        _bestScoreText.text = $"BestScore : {_bestScore}";
-        _currentScoreText.text = $"Score : {_currentScore}";
+        _bestScoreText.text = $"BestScore : {_bestScore:N0}";
+        _currentScoreText.text = $"Score : {_currentScore:N0}";
     }
 
     public void AddScore(int score)
