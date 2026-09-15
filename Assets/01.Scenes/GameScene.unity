@@ -3156,8 +3156,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8003744475742319849, guid: 3df83625437b8b9499214436fc5c6c25, type: 3}
+      propertyPath: m_Range
+      value: 8.338242
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003744475742319849, guid: 3df83625437b8b9499214436fc5c6c25, type: 3}
+      propertyPath: m_Intensity
+      value: 14.627009
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5830327120204582728, guid: 3df83625437b8b9499214436fc5c6c25, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3df83625437b8b9499214436fc5c6c25, type: 3}
@@ -3334,5 +3343,5 @@ SceneRoots:
   - {fileID: 1090098654}
   - {fileID: 993513033}
   - {fileID: 704758190}
-  - {fileID: 2018077263}
   - {fileID: 1990100698}
+  - {fileID: 2018077263}

@@ -18,20 +18,15 @@ public class Upgrade
     public float NextValue => _nextValue;
     public int Cost => _cost;
 
-    public Upgrade(int level, string name, float defaultValue, float increaseValue, float increaseCost)
-    {
-        //_level = level;
-        //_name = name;
-        //_defaultValue = defaultValue;
-        //_increaseValue = increaseValue;
-        //_increaseCost = increaseCost;
-
-        Calculate();
-    }
-
     public void LevelUp()
     {
         _level += 1;
+        Calculate();
+    }
+
+    public void SetLevel(int level)
+    {
+        _level = level;
         Calculate();
     }
 

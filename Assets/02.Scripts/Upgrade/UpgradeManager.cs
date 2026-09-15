@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
+    private const string Upgrade_Save_Data_Key = "UpgradeSaveData";
+
     //관리 : 업그레이드들에 대한 무결성과 생성,조회, 수정, 삭제 등의 게임 관련 로직
     private static UpgradeManager _instance;
     public static UpgradeManager Instance
@@ -39,19 +41,20 @@ public class UpgradeManager : MonoBehaviour
 
     private void Start()
     {
+        Load();
         RefreshUI();
     }
 
     public void LevelUp(int index)
     {
         Upgrade upgrade = _upgrades[index];
-        if (ScoreManager.Instance.CurrentScore < upgrade.Cost)
+        if (!ScoreManager.Instance.TrySpendScore(upgrade.Cost))
         {
             return;
         }
 
-        ScoreManager.Instance.SpendScore(upgrade.Cost);
         _upgrades[index].LevelUp();
+        Save();
         RefreshUI();
     }
 
@@ -61,5 +64,41 @@ public class UpgradeManager : MonoBehaviour
         {
             ui.Refresh();
         }
+    }
+
+    private void Save()
+    {
+        UpgradeSaveData saveData = new UpgradeSaveData(_upgrades.Length);
+
+        for (int i = 0; i < _upgrades.Length; i++)
+        {
+            saveData.Name[i] = _upgrades[i].Name;
+            saveData.Level[i] = _upgrades[i].Level;
+        }
+
+        //Json 포멧으로 저장.
+        string json = JsonUtility.ToJson(saveData);
+        PlayerPrefs.SetString("UpgradeSaveData", json);
+        PlayerPrefs.Save();
+    }
+
+    private void Load()
+    {
+        if (!PlayerPrefs.HasKey("UpgradeSaveData"))
+        {
+            Debug.LogWarning("데이터 로딩 실패) 세이브데이터 키가 존재하지 않습니다.");
+            return;
+        }
+
+        var loadedData = PlayerPrefs.GetString(Upgrade_Save_Data_Key);
+        UpgradeSaveData saveData = JsonUtility.FromJson<UpgradeSaveData>(loadedData);
+
+        for (int i = 0; i < _upgrades.Length; i++)
+        {
+            Debug.Log($"{_upgrades[i].Name} 로드 완료!");
+            _upgrades[i].SetLevel(saveData.Level[i]);
+        }
+
+        RefreshUI();
     }
 }
