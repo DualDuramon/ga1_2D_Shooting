@@ -78,7 +78,9 @@ public class UpgradeManager : MonoBehaviour
 
         //Json 포멧으로 저장.
         string json = JsonUtility.ToJson(saveData);
-        PlayerPrefs.SetString(Upgrade_Save_Data_Key, json);
+        string encryptedJson = Security.Encrypt(json);
+
+        PlayerPrefs.SetString(Upgrade_Save_Data_Key, encryptedJson);
         PlayerPrefs.Save();
     }
 
@@ -90,8 +92,10 @@ public class UpgradeManager : MonoBehaviour
             return;
         }
 
-        var loadedData = PlayerPrefs.GetString(Upgrade_Save_Data_Key);
-        UpgradeSaveData saveData = JsonUtility.FromJson<UpgradeSaveData>(loadedData);
+        string loadedData = PlayerPrefs.GetString(Upgrade_Save_Data_Key);
+        string decryptedData = Security.Decrypt(loadedData);
+
+        UpgradeSaveData saveData = JsonUtility.FromJson<UpgradeSaveData>(decryptedData);
 
         for (int i = 0; i < _upgrades.Length; i++)
         {
