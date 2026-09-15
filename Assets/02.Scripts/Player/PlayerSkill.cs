@@ -24,7 +24,7 @@ public class PlayerSkill : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B) && CanUseBomb())
+        if (SimpleInput.GetButtonDown("Bomb") && CanUseBomb())
         {
             UseBomb();
             ResetBombTimer();
@@ -49,8 +49,8 @@ public class PlayerSkill : MonoBehaviour
             Debug.LogWarning($"{gameObject.name} : _bombPrefab is Null! Can't Use Bomb");
             return;
         }
-
         Instantiate(_bombPrefab, _bombPosition.position, Quaternion.identity);
+        _currentBombCount--;
     }
 
     private void ResetBombTimer()

@@ -51,8 +51,8 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
+            float h = SimpleInput.GetAxisRaw("Horizontal");
+            float v = SimpleInput.GetAxisRaw("Vertical");
 
             dir = new Vector2(h, v);
         }
