@@ -5,7 +5,8 @@ public class Enemy : MonoBehaviour
     [Header("Movement Variables")]
     [SerializeField] protected Vector2 _moveDirection = Vector2.down;
     [SerializeField] private float _speed = 1.0f;
-    [SerializeField] private float _health = 100f;
+    [SerializeField] private int _baseHealth = 70; // enemy의 기준 체력
+    [SerializeField] private int _health = 70;
 
     [Header("Combat Variables")]
     [SerializeField] private float _attackDamage = 300f;
@@ -50,14 +51,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void SetHealthBalance(float multiplier)
+    {
+        Debug.Log($"{gameObject.name} : 체력 수정 -> {multiplier}");
+        _health = (int)(_baseHealth * multiplier);
+    }
+
     private void Move()
     {
         transform.position += (Vector3)_moveDirection.normalized * _speed * Time.deltaTime;
     }
 
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(int damageAmount)
     {
-        _health = _health - damageAmount;
+        _health = _health - (int)damageAmount;
 
         if (_health < 0f)
         {

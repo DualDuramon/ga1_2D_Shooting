@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    //필요 속성
-    // - 타이머
+
     [Header("Spawn Duration")]
     [SerializeField] private float _maxSpawnInterval = 2f;
     [SerializeField] private float _minSpawnInterval = 1f;
     private float _spawnInterval = 3f;
     private float _timer = 0f;
 
-    // - 생성할 프리펩
-    [Header("Spawned Enemy Prefab")]
+    [Header("Enemy Spawn Setting")]
     [SerializeField] private EnemySpawnDataTableSO _spawnDataTable;
+    [SerializeField] private EnemyBalanceDataTableSO _balanceDataTable;
 
     private int _maxWeight;
 
@@ -55,30 +54,12 @@ public class EnemySpawner : MonoBehaviour
         Transform spawnTf = _spawnPoint[(Random.Range(0, _spawnPoint.Length))];
 
         Enemy enemy = Instantiate(DecideSpawnEnemyPrefabs());
+        enemy.SetHealthBalance(GetHealthMultiplier());
         enemy.transform.position = spawnTf.position;
     }
 
     private Enemy DecideSpawnEnemyPrefabs()
     {
-        //int calculatedProb = Random.Range(0, _maxProbablity);
-        //Enemy spawnEnemy = null;
-
-        //TODO : ScriptableObject를 사용해서 리펙토링
-        //이유 : 배열을 사용했지만 각 아이템이 어떤 프리펩인지 알 수가 없다.
-        // 각 에너미 스폰 확률이랑 Enemy가 분리되어 있어서 유지보수가 어렵다
-
-        //for (int i = 0; i < _enemySpawnProbabilities.Length; i++)
-        //{
-        //    if (calculatedProb < _enemySpawnProbabilities[i])
-        //    {
-        //        spawnEnemy = _enemyPrefabs[i];
-        //        break;
-        //    }
-        //    calculatedProb -= _enemySpawnProbabilities[i];
-        //}
-
-
-        //가중치 랜덤 선택
         Enemy spawnEnemy = null;
 
         int randomWeight = Random.Range(0, _maxWeight);
@@ -96,5 +77,31 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return spawnEnemy;
+    }
+
+    private float GetHealthMultiplier()
+    {
+        if (_balanceDataTable == null)
+        {
+            Debug.LogWarning($"{gameObject.name} : _balanceDataTable is Null. Check it out");
+            return 1.0f;
+        }
+
+        int bestScore = ScoreManager.Instance.BestScore;
+        float multiplier = 1f;
+
+        foreach (EnemyBalanceData data in _balanceDataTable.Datas)
+        {
+            if (data.RequiredScore < bestScore)
+            {
+                multiplier = data.HealthMultiplier;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return multiplier;
     }
 }

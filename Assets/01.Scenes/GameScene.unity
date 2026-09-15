@@ -2310,6 +2310,7 @@ MonoBehaviour:
   _maxSpawnInterval: 1
   _minSpawnInterval: 0.2
   _spawnDataTable: {fileID: 11400000, guid: 2257a68230c02894c959f51aa6c96161, type: 2}
+  _balanceDataTable: {fileID: 11400000, guid: 46556dcfd266bb8489023c0f10b9a735, type: 2}
   _spawnPoint:
   - {fileID: 1157914629}
   - {fileID: 1437594551}
@@ -3340,8 +3341,8 @@ SceneRoots:
   - {fileID: 1282786093}
   - {fileID: 1861586365}
   - {fileID: 2056888743}
-  - {fileID: 1090098654}
   - {fileID: 993513033}
   - {fileID: 704758190}
   - {fileID: 1990100698}
   - {fileID: 2018077263}
+  - {fileID: 1090098654}

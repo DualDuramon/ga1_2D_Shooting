@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public Vector2 Direction = Vector2.up;
     public float MoveSpeed = 0f;
     public float LifeTime = 1f;
-    public float Damage = 40f;
+    public int Damage = 40;
 
     private float _generatedTime = 0f;
 
@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
-                float finalDamage = Damage + UpgradeManager.Instance.Upgrades[0].CurrentValue;
+                int finalDamage = Damage + (int)UpgradeManager.Instance.Upgrades[0].CurrentValue;
                 enemy.TakeDamage(finalDamage);
             }
 

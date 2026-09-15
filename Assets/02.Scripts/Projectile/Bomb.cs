@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float _maxLifeTime = 10f;
     private float _lifeTime = 0f;
     [SerializeField] private LayerMask _damageableMask;
-    [SerializeField] private float _damage;
+    [SerializeField] private int _damage;
 
     [Header("Effect Setting")]
     [SerializeField] private Transform _trailTransform;
