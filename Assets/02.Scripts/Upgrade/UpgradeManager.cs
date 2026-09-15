@@ -78,13 +78,13 @@ public class UpgradeManager : MonoBehaviour
 
         //Json 포멧으로 저장.
         string json = JsonUtility.ToJson(saveData);
-        PlayerPrefs.SetString("UpgradeSaveData", json);
+        PlayerPrefs.SetString(Upgrade_Save_Data_Key, json);
         PlayerPrefs.Save();
     }
 
     private void Load()
     {
-        if (!PlayerPrefs.HasKey("UpgradeSaveData"))
+        if (!PlayerPrefs.HasKey(Upgrade_Save_Data_Key))
         {
             Debug.LogWarning("데이터 로딩 실패) 세이브데이터 키가 존재하지 않습니다.");
             return;
