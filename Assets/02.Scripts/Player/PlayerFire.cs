@@ -11,7 +11,6 @@ public class PlayerFire : MonoBehaviour
     public Transform[] SideMuzzleLocation;
 
     private float _lastFireTime = 0f;
-    private bool _automaticFire = false;
 
     private PlayerCommandInvoker _invoker;
     public bool IsReplaying => !_invoker.CanReadInput;
@@ -29,17 +28,14 @@ public class PlayerFire : MonoBehaviour
     {
         if (IsReplaying) return;
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetFireMode(!_automaticFire);
-        }
 
         if (CanFire())
         {
-            if (_autoMove.IsAutoPlay || _automaticFire || Input.GetKeyDown(KeyCode.Space))
-            {
-                ExecuteFire();
-            }
+            //if (_autoMove.IsAutoPlay || _automaticFire || Input.GetKeyDown(KeyCode.Space))
+            //{
+            //    ExecuteFire();
+            //}
+            ExecuteFire();
         }
     }
 
@@ -74,10 +70,5 @@ public class PlayerFire : MonoBehaviour
             Bullet bullet = BulletPool.Instance.GetBullet(neededBulletType);
             bullet.transform.position = muzzleTf.position;
         }
-    }
-
-    public void SetFireMode(bool auto)
-    {
-        _automaticFire = auto;
     }
 }

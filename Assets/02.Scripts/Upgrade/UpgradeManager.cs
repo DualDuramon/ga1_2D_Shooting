@@ -88,7 +88,10 @@ public class UpgradeManager : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey(Upgrade_Save_Data_Key))
         {
-            Debug.LogWarning("데이터 로딩 실패) 세이브데이터 키가 존재하지 않습니다.");
+            foreach (Upgrade ug in _upgrades)
+            {
+                ug.SetLevel(1);
+            }
             return;
         }
 
