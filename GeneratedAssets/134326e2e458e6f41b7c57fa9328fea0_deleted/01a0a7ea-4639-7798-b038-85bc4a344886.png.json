@@ -1,0 +1,41 @@
+{
+    "asset": "134326e2e458e6f41b7c57fa9328fea0",
+    "fileName": "01a0a7ea-4639-7798-b038-85bc4a344886.png",
+    "prompt": "An active ON-state version of the exact same button shown in the reference image. Keep the exact composition, geometry, and placement: a circular 3D beveled button with an outer rim, two crossed swords with a spark burst at the intersection in the center, and the bold text 'AUTO' directly beneath the swords. Transform the appearance from dark grey/slate to a vibrant glowing ON state: the button body is a rich vibrant blue (#1877F2) with bright highlights; the crossed swords, spark burst, and 'AUTO' text are glowing brightly with electric cyan and pure white energy; add a subtle outer blue rim light. Perfectly centered on a transparent background.",
+    "negativePrompt": "",
+    "model": "gemini-3.1-flash",
+    "modelName": "Gemini 3.1 Nano Banana 2",
+    "customSeed": -1,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelatePixelGridSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 7,
+                "doodle": [],
+                "label": "Image",
+                "strength": 0.25,
+                "invertStrength": false,
+                "assetReferenceGuid": "6a910a9a3140a7f4eb61b4539d3cef18",
+                "unlabeledIndex": -1
+            }
+        ]
+    },
+    "upscaleFactor": 0,
+    "dimensions": {
+        "width": 1024,
+        "height": 1024
+    },
+    "spriteSheet": false,
+    "duration": 0.0,
+    "dynamicParams": {
+        "serializedData": []
+    }
+}

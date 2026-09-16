@@ -1,0 +1,54 @@
+{
+    "asset": "6a910a9a3140a7f4eb61b4539d3cef18",
+    "fileName": "01a0a7e9-4d89-796b-b129-4a60aeccb981.png",
+    "prompt": "Change the button state from OFF to ON. Keep the exact same circular shape, border bevel, crossed swords icon placement, and 'AUTO' text position completely unchanged. Modify only the color, lighting, and glow effects: make the button face a rich vibrant electric blue, add bright cyan highlights and glossy specular shine on top, and make the crossed swords and 'AUTO' text bright glowing white-cyan with a subtle inner glow. Keep the background transparent.",
+    "negativePrompt": "",
+    "model": "gpt-image-1-5",
+    "modelName": "GPT Image 1.5",
+    "customSeed": -1,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelatePixelGridSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 7,
+                "doodle": [],
+                "label": "Image",
+                "strength": 0.25,
+                "invertStrength": false,
+                "assetReferenceGuid": "6a910a9a3140a7f4eb61b4539d3cef18",
+                "unlabeledIndex": -1
+            }
+        ]
+    },
+    "upscaleFactor": 0,
+    "dimensions": {
+        "width": 1024,
+        "height": 1024
+    },
+    "spriteSheet": false,
+    "duration": 0.0,
+    "dynamicParams": {
+        "serializedData": [
+            {
+                "key": "shadow_mode",
+                "value": ""
+            },
+            {
+                "key": "pixel_grid_size",
+                "value": "16"
+            },
+            {
+                "key": "upscale_factor",
+                "value": "4k"
+            }
+        ]
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "asset": "1e650e6a4fa2bde47b7b43590c9f5ac7",
+    "fileName": "01a0a7e5-fe84-72ba-a283-6d6cf8d3731b.png",
+    "prompt": "A mobile game UI round button icon for Auto Attack in ON / active / selected state. In the exact visual style, bright vibrant glowing blue and cyan color palette, border thickness, shading, and lighting of the reference Auto_On button: circular button in activated state, glowing bright blue fill, glossy highlight on top, concentric outer border ring with vibrant bevel. In the center of the button is a crisp, bright, glowing white/cyan Auto Attack symbol with crossed swords or automatic crosshair burst icon, with the text 'AUTO' clearly inscribed below or above the icon. The entire button is centered on a transparent background, matching the uploaded Auto_On reference UI button and paired with Auto_Attack_Off.",
+    "negativePrompt": "",
+    "model": "gemini-3.1-flash",
+    "modelName": "Gemini 3.1 Nano Banana 2",
+    "customSeed": -1,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelatePixelGridSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 7,
+                "doodle": [],
+                "label": "Image",
+                "strength": 0.25,
+                "invertStrength": false,
+                "assetReferenceGuid": "afdfe854a4e9d1243b7bd95eb85b5953",
+                "unlabeledIndex": -1
+            }
+        ]
+    },
+    "upscaleFactor": 0,
+    "dimensions": {
+        "width": 1024,
+        "height": 1024
+    },
+    "spriteSheet": false,
+    "duration": 0.0,
+    "dynamicParams": {
+        "serializedData": []
+    }
+}

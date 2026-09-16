@@ -1,0 +1,41 @@
+{
+    "asset": "13fdd11c177086b45bc8e4d607838bf4",
+    "fileName": "01a0a7d0-56fd-76db-9259-0ae4e99cf741.png",
+    "prompt": "Casual mobile game UI button, square rounded rectangle blue button icon, glossy bright blue gradient fill, clean thick border, featuring a sword icon with circular arrows around it in the center indicating auto attack, clear readable white or bright icon, isolated on transparent background, 2D mobile game asset",
+    "negativePrompt": "",
+    "model": "game-ui-essentials-2",
+    "modelName": "Game UI Essentials 2.0",
+    "customSeed": -1,
+    "w3CTraceId": "",
+    "feedback": 0,
+    "refinementMode": "Generation",
+    "pixelateTargetSize": 0,
+    "pixelateKeepImageSize": false,
+    "pixelatePixelBlockSize": 0,
+    "pixelatePixelGridSize": 0,
+    "pixelateMode": 0,
+    "pixelateOutlineThickness": 0,
+    "doodles": {
+        "m_Items": [
+            {
+                "doodleReferenceType": 7,
+                "doodle": [],
+                "label": "Image",
+                "strength": 0.25,
+                "invertStrength": false,
+                "assetReferenceGuid": "edbaa7759f7028744b165b98053576d7",
+                "unlabeledIndex": -1
+            }
+        ]
+    },
+    "upscaleFactor": 0,
+    "dimensions": {
+        "width": 1024,
+        "height": 1024
+    },
+    "spriteSheet": false,
+    "duration": 0.0,
+    "dynamicParams": {
+        "serializedData": []
+    }
+}
